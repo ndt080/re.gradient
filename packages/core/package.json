@@ -1,0 +1,18 @@
+{
+  "name": "darkvi-core",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "build:release": "tsc && vite build  --mode production"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "terser": "^5.16.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "license": "MPL-2.0",
+  "author": "Andrei Petrov"
+}
