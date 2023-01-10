@@ -12,7 +12,7 @@ export default defineConfig({
       entry: "src/main.ts",
       name: "darkvi-core",
       formats: ["es", "umd", "cjs"],
-      fileName: (format) => `darkvi-core.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
   },
   resolve: {

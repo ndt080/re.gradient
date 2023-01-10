@@ -1,16 +1,19 @@
 {
-  "name": "darkvi-player",
-  "version": "0.0.1",
+  "name": "@darkvi/player",
+  "license": "MPL-2.0",
+  "author": "Andrei Petrov",
+  "workspaces": [
+    "packages/core"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:modules": "npm run build -ws"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.2",
+    "stylelint": "^14.16.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/darkguin/darkvi-player.git"
-  },
-  "devDependencies": {
-    "prettier": "^2.8.2"
-  },
-  "license": "MPL-2.0",
-  "author": "Andrei Petrov"
+  }
 }

@@ -1,8 +1,16 @@
 {
-  "name": "darkvi-core",
-  "private": true,
+  "name": "@darkvi/core",
   "version": "0.0.1",
   "type": "module",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
   "scripts": {
     "build": "tsc && vite build",
     "build:release": "tsc && vite build  --mode production"
