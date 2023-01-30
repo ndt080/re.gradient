@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+  <title>Demo page</title>
+
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .player {
+      width: 80vw;
+    }
+  </style>
+</head>
+<body>
+<noscript>
+  <strong>
+    We're sorry but v-card doesn't work properly without JavaScript enabled. Please enable it to continue.
+  </strong>
+</noscript>
+
+<!--<lpr-player src="https://video-hosting-bucket-pavel.s3.amazonaws.com/IMG_1302.MP4" muted>-->
+<!--<lpr-poster src="https://www.animefantastica.com/wp-content/uploads/J-kaisen-1536x864.jpeg"></lpr-poster>-->
+<!--<lpr-player class="player" muted src="https://media-files.vidstack.io/720p.mp4">-->
+
+<drk-vi-player></drk-vi-player>
+
+<!-- Connecting the library with launching in development mode using the vite-dev script -->
+<script src='src/index.ts' type="module"></script>
+
+<!-- Connecting a ready-made library assembly from the dist folder -->
+<!--<script src="./dist/index.umd.js"></script>-->
+</body>
+</html>

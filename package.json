@@ -3,14 +3,18 @@
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
   "workspaces": [
-    "packages/core"
+    "packages/core",
+    "packages/ui"
   ],
   "scripts": {
     "build:modules": "npm run build -ws"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
     "prettier": "^2.8.2",
-    "stylelint": "^14.16.1"
+    "stylelint": "^14.16.1",
+    "tslib": "^2.4.1",
+    "vite": "^4.0.4"
   },
   "repository": {
     "type": "git",
