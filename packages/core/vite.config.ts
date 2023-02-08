@@ -1,16 +1,12 @@
 import { defineConfig } from 'vite';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, URL } from "url";
 import typescript from '@rollup/plugin-typescript';
-
-const getPath = (path: string) => {
-  return fileURLToPath(new URL(path, import.meta.url));
-};
 
 export default defineConfig({
   plugins: [
     typescript({
       declaration: true,
-      rootDir: getPath('./src'),
+      rootDir: fileURLToPath(new URL("./src", import.meta.url)),
 
       compilerOptions: {
         'plugins': [
@@ -21,9 +17,9 @@ export default defineConfig({
     }),
   ],
   build: {
-    target: 'esnext',
+    target: 'ESNext',
     lib: {
-      entry: getPath('./src/index.ts'),
+      entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
       name: 'darkvi-core',
       formats: ['es', 'umd', 'cjs'],
       fileName: (format) => `index.${format}.js`,
@@ -31,9 +27,8 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: '@', replacement: getPath('./src') },
-      { find: '@utils', replacement: getPath('./src/utils') },
-    ],
+      { find: '@/', replacement: fileURLToPath(new URL("./src", import.meta.url)) },
+    ]
   },
   define: {
     'process.env.NODE_ENV': '"production"',

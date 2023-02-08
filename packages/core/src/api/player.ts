@@ -1,12 +1,11 @@
-import { createUUID } from '../utils/createUUID';
+import { createUUID } from '../utils';
 import { PlayerModule } from './module';
 import { PlayerEngine } from './engine';
-import { EventEmitter } from '../modules/events-emmiter';
-import { FullscreenMode } from '../modules/fullscreen/fullscreen';
-import { Lifecycle, LifecycleHook } from '../modules/lifecycle';
-import { Html5EngineModule } from '../engines/html5';
+import { EventEmitter, FullscreenMode, HTML5Engine } from '../modules';
+import { HookStore, LifecycleHook, useLifecycle } from './lifecycle';
+import { Source } from '../types';
 
-class Player {
+export class Player {
   private static readonly _modules: PlayerModule[] = [];
   private readonly _engines: PlayerEngine[] = [];
 
@@ -14,28 +13,34 @@ class Player {
   readonly $mediaEl: HTMLMediaElement;
   readonly $containerEl: HTMLElement;
 
+  readonly hooks: Record<LifecycleHook, HookStore>;
+  readonly triggerHook: (name: LifecycleHook, ...args) => void;
+  readonly clearHook: (name: LifecycleHook, ...args) => void;
+  readonly clearHooks: () => void;
+
+  load(src: Source) {
+    this._engines.forEach(({ load, isSupported, isSourceSupported }: PlayerEngine) => {
+      if(!isSupported()) return;
+      if(!isSourceSupported(src.type)) return;
+
+      load(src);
+    });
+  }
+
   constructor(mediaEl: HTMLMediaElement, containerEl: HTMLElement) {
-    this.id = createUUID("player");
+    this.id = createUUID('player');
     this.$mediaEl = mediaEl;
     this.$containerEl = containerEl;
 
-    Player._modules.forEach((module) => module.fn(this));
-    this._triggerHook(LifecycleHook.CREATED);
-  }
+    const { hooks, triggerHook, clearHook, clearHooks } = useLifecycle();
 
-  dispose() {
-    Player._modules.forEach((module) => module.dispose());
-    this._triggerHook(LifecycleHook.BEFORE_DISPOSED);
-    this._clearHooks();
-  }
+    this.hooks = hooks;
+    this.triggerHook = triggerHook;
+    this.clearHook = clearHook;
+    this.clearHooks = clearHooks;
 
-  installEngine(engine: PlayerEngine) {
-    if (!!engine && this._engines.indexOf(engine) < 0) {
-      if(engine.isSupported()) {
-        this._engines.push(engine);
-      }
-    }
-    this._engines.sort((e1, e2) => e1.priority > e2.priority ? 1 : 0);
+    Player._modules.forEach((module) => module.moduleFn(this));
+    this.triggerHook('created');
   }
 
   static installModule(module: PlayerModule) {
@@ -48,16 +53,27 @@ class Player {
     modules.forEach((m) => this.installModule(m));
     return this;
   }
-}
 
-type CoreModules = EventEmitter & FullscreenMode & Lifecycle;
+  dispose() {
+    this.triggerHook('before_disposed');
+    Player._modules.forEach((module) => module.dispose());
+    this.clearHooks();
+  }
 
-interface Player extends CoreModules {
-  [key: string]: unknown;
+  installEngine(engine: PlayerEngine) {
+    if (!!engine && this._engines.indexOf(engine) < 0) {
+      if (engine.isSupported()) {
+        this._engines.push(engine);
+      }
+    }
+    this._engines.sort((e1, e2) => e1.priority < e2.priority ? 1 : 0);
+  }
 }
 
 // Register default modules
-Player.use([Html5EngineModule, EventEmitter, FullscreenMode, Lifecycle]);
-export default Player;
+Player.use([HTML5Engine, EventEmitter, FullscreenMode]);
+
+declare type CoreModules = EventEmitter & FullscreenMode;
+export declare interface Player extends CoreModules {}
 
 

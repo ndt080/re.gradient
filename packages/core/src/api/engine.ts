@@ -1,33 +1,64 @@
-import type Player from './player';
+import { PlayerModuleContext, useModule } from './module';
+import { Source } from '../types';
 
-export abstract class PlayerEngine {
-  protected readonly _player: Player;
-  private _sourceUrl: string = '';
-  private _sourceType: string = '';
+type SourceChangedFn = (src: Source) => void;
 
-  public priority = -1;
+type PlayerEngineContext = PlayerModuleContext & {
+  readonly engine: PlayerEngine;
+  setOptions(options: PlayerEngineOptions): void;
+  onSourceChanged(SourceChangedFn): void;
+};
 
-  abstract isSupported(): boolean;
-  abstract isSourceSupported(type: string): CanPlayTypeResult;
+interface PlayerEngineOptions {
+  priority: -1 | 0 | 1;
 
-  getSource() {
-    return this._sourceUrl;
-  }
+  isSupported(): boolean;
 
-  setSource(src: string, type: string) {
-    this._sourceUrl = src;
-    this._sourceType = type;
+  isSourceSupported(type: string): CanPlayTypeResult;
 
-    if(this.isSourceSupported(this._sourceType)) {
-      this._player.$mediaEl.src = this._sourceUrl;
-    } else {
-      throw new Error('This source is not supported by the current playback engine');
-    }
-  }
+  [key: string]: unknown;
+}
 
-  constructor(player: Player) {
-    this._player = player;
-  }
+export interface PlayerEngine {
+  priority: -1 | 0 | 1;
+  source: string;
+  sourceType: string;
 
-  dispose(){};
+  isSupported(): boolean;
+
+  load(src: Source): void;
+
+  isSourceSupported(type: string): CanPlayTypeResult;
+
+  [key: string]: unknown;
+}
+
+export function useEngine(callback: (ctx: PlayerEngineContext) => void) {
+  const sourceChangedFns = new Set<SourceChangedFn>();
+
+  const engine = {
+    priority: -1,
+    isSupported: () => true,
+    load(src: Source) {
+      sourceChangedFns.forEach((fn) => fn(src));
+    },
+    isSourceSupported: (_) => 'probably',
+  } as PlayerEngine;
+
+  const setOptions = (options: PlayerEngineOptions) => {
+    engine.priority = options.priority;
+    engine.isSupported = options.isSupported;
+    engine.isSourceSupported = options.isSourceSupported;
+  };
+
+  const onSourceChanged = (fn: SourceChangedFn) => {
+    sourceChangedFns.add(fn);
+  };
+
+  return useModule(({ player, onDispose, ...rest }) => {
+    const context = { engine, player, setOptions, onSourceChanged, onDispose, ...rest } as PlayerEngineContext;
+    callback(context);
+
+    player.installEngine(engine);
+  });
 }

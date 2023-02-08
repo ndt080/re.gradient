@@ -1,6 +1,6 @@
 import { useModule } from '../../api/module';
 import { Events, FullscreenChangeEvents } from '../events-emmiter';
-import { usePlayerExtend } from '../../utils/usePlayerExtend';
+import { usePlayerExtend } from '../../utils';
 
 export const FullscreenMode = useModule(({ player, onDispose }) => {
   const onFullscreenChange = () => {
@@ -42,7 +42,7 @@ export const FullscreenMode = useModule(({ player, onDispose }) => {
   });
 });
 
-export interface FullscreenMode {
+export declare interface FullscreenMode {
   isFullscreen: boolean;
   toFullScreen(): void;
   fromFullScreen(): void;

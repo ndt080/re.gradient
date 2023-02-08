@@ -1,4 +1,4 @@
-import { EventEmitter } from "./events-emitter";
-import { Events, FullscreenChangeEvents } from "./types/events";
+import { FullscreenChangeEvents, Events } from './values';
+import { FullscreenMode } from '../fullscreen';
 
-export { EventEmitter, Events, FullscreenChangeEvents };
+export { FullscreenMode, FullscreenChangeEvents, Events };

@@ -1,4 +1,4 @@
-import Player from '../api/player';
+import { Player } from '../api/player';
 
 export function usePlayerExtend(prototypes: { [key: string | symbol]: any }) {
   Reflect.ownKeys(prototypes).forEach((property) => {

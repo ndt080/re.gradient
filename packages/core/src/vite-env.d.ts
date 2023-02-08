@@ -1,6 +1,5 @@
 /// <reference types="vite/client" />
 
-
 export declare global {
   type ExitFullscreen = typeof document.exitFullscreen;
   type RequestFullscreen = typeof document.documentElement.requestFullscreen;

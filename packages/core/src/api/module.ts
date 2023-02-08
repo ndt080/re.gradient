@@ -1,25 +1,26 @@
-import type Player from './player';
+import type { Player } from './player';
 
 export type PlayerModuleFn = (player: Player) => Player;
+export type PlayerModuleDisposeFn = () => void;
 
 export interface PlayerModule {
-  fn: PlayerModuleFn;
+  moduleFn: PlayerModuleFn;
   dispose(): void;
 }
 
 export interface PlayerModuleContext {
   player: Player;
-  onDispose(handler: () => void): void;
+  onDispose(fn: () => void): void;
 }
 
 export function useModule(callback: (context: PlayerModuleContext) => void): PlayerModule {
-  let disposeHandlerFn: () => void;
+  let disposeHandlerFn: PlayerModuleDisposeFn;
 
-  const onDispose = (handler: () => void) => {
-    disposeHandlerFn = handler;
+  const onDispose = (fn: PlayerModuleDisposeFn) => {
+    disposeHandlerFn = fn;
   };
 
-  const fn: PlayerModuleFn = (player: Player) => {
+  const moduleFn: PlayerModuleFn = (player: Player) => {
     callback({ player, onDispose });
     return player;
   };
@@ -28,5 +29,5 @@ export function useModule(callback: (context: PlayerModuleContext) => void): Pla
     disposeHandlerFn?.();
   };
 
-  return { fn, dispose };
+  return { moduleFn, dispose };
 }

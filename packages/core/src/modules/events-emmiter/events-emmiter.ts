@@ -1,13 +1,14 @@
 import { useModule } from '../../api/module';
-import { usePlayerExtend } from '../../utils/usePlayerExtend';
+import { usePlayerExtend } from '../../utils';
+import { Events } from './values';
 
-export type EventMap = HTMLMediaElementEventMap;
-export type Event = keyof EventMap | Array<keyof EventMap>;
-export type EventListener = (ev: EventMap[keyof EventMap]) => void;
+type EventMap = HTMLMediaElementEventMap;
+type Event = keyof EventMap | Array<keyof EventMap>;
+type EventListener = (ev: EventMap[keyof EventMap]) => void;
 
 const normalizeEvent = (event: Event) => {
-  return !Array.isArray(event) ? [event] :  event;
-}
+  return !Array.isArray(event) ? [event] : event;
+};
 
 export const EventEmitter = useModule(({ player }) => {
   usePlayerExtend({
@@ -35,8 +36,12 @@ export const EventEmitter = useModule(({ player }) => {
   });
 });
 
-export interface EventEmitter {
+export declare interface EventEmitter {
   on(event: Event, listener: EventListener): this;
+
   once(event: Event, listener: EventListener): this;
+
   off(event: Event, listener: EventListener): this;
 }
+
+export { Events };
