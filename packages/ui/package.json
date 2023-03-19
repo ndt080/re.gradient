@@ -28,7 +28,7 @@
     "@darkvi/core": "^0.0.1"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@darkvi:registry": "https://npm.pkg.github.com"
   },
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
