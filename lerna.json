@@ -6,7 +6,6 @@
     "publish": {
       "createRelease": "github",
       "npmClient": "npm",
-      "verifyAccess": false,
       "registry": "https://npm.pkg.github.com/darkguin",
       "fromPackage": true
     }
