@@ -1,5 +1,5 @@
 {
-  "name": "@darkvi/ui",
+  "name": "@darkguin/ui",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.umd.js",
@@ -28,9 +28,9 @@
     "@darkvi/core": "^0.0.1"
   },
   "publishConfig": {
-    "@darkvi:registry": "https://npm.pkg.github.com/darkguin"
+    "registry": "https://npm.pkg.github.com"
   },
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
-  "gitHead": "aa1373ccc54c32f6624636a7ed01b0e225dcdeba"
+  "gitHead": "1277228256bdefe553d790c3dc3845cb2f874ca8"
 }

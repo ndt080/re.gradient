@@ -1,5 +1,5 @@
 {
-  "name": "@darkvi/player",
+  "name": "darkvi-player",
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
   "workspaces": [
@@ -18,7 +18,7 @@
     "vite": "^4.0.4"
   },
   "publishConfig": {
-    "@darkvi:registry": "https://npm.pkg.github.com/darkguin"
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
