@@ -4,7 +4,11 @@
   "version": "0.0.1",
   "command": {
     "publish": {
-      "registry": "https://npm.pkg.github.com/darkguin"
+      "createRelease": "github",
+      "npmClient": "npm",
+      "verifyAccess": false,
+      "registry": "https://npm.pkg.github.com/darkguin",
+      "fromPackage": true
     }
   }
 }
