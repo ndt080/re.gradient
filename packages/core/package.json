@@ -24,9 +24,9 @@
     "typescript": "^4.9.5"
   },
   "publishConfig": {
-    "@darkvi:registry": "https://npm.pkg.github.com"
+    "@darkvi:registry": "https://registry.npmjs.org"
   },
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
-  "gitHead": "01a9f9658487e6b8acabe61079740b37f0bf2171"
+  "gitHead": "757d5f43038dd2e72af72cc07d00b6f6fb4865ca"
 }

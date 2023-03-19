@@ -18,7 +18,7 @@
     "vite": "^4.0.4"
   },
   "publishConfig": {
-    "@darkvi:registry": "https://npm.pkg.github.com"
+    "@darkvi:registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",

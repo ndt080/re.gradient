@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "command": {
     "publish": {
-      "createRelease": "github",
+      "createRelease": "npm",
       "npmClient": "npm",
-      "registry": "https://npm.pkg.github.com/darkguin",
+      "registry": "https://registry.npmjs.org",
       "fromPackage": true
     }
   }
