@@ -1,5 +1,5 @@
 {
-  "name": "@darkguin/core",
+  "name": "@darkvi/core",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.umd.js",
@@ -28,5 +28,5 @@
   },
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
-  "gitHead": "1277228256bdefe553d790c3dc3845cb2f874ca8"
+  "gitHead": "01a9f9658487e6b8acabe61079740b37f0bf2171"
 }
