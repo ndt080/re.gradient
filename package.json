@@ -17,6 +17,9 @@
     "stylelint": "^14.16.1",
     "vite": "^4.0.4"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/darkguin/darkvi-player.git"

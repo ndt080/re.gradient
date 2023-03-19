@@ -23,6 +23,9 @@
     "@types/node": "^18.11.18",
     "typescript": "^4.9.5"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
   "gitHead": "757d5f43038dd2e72af72cc07d00b6f6fb4865ca"
