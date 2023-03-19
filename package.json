@@ -10,6 +10,9 @@
     "build:modules": "npm run build -ws",
     "publish": "lerna publish from-package"
   },
+  "dependencies": {
+    "nanoid": "^4.0.1"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.0.0",
     "lerna": "^6.5.1",
