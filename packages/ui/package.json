@@ -28,5 +28,6 @@
     "@darkvi/core": "^0.0.1"
   },
   "license": "MPL-2.0",
-  "author": "Andrei Petrov"
+  "author": "Andrei Petrov",
+  "gitHead": "9d8c12668b47258aae56db60029e361387bc7064"
 }
