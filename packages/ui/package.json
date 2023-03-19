@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --emitDeclarationOnly && vite build",
+    "build": "tsc --emitDeclarationOnly && vite build --minify",
     "build:release": "tsc --emitDeclarationOnly && vite build --mode production"
   },
   "devDependencies": {

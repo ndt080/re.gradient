@@ -17,7 +17,6 @@ export default defineConfig({
     }),
   ],
   build: {
-    target: 'ESNext',
     lib: {
       entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
       name: 'darkvi-core',

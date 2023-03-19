@@ -1,13 +1,26 @@
 import { defineConfig } from 'vite';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, URL } from 'url';
+import typescript from '@rollup/plugin-typescript';
 
 const getPath = (path: string) => {
   return fileURLToPath(new URL(path, import.meta.url));
 };
 
 export default defineConfig({
+  plugins: [
+    typescript({
+      declaration: true,
+      rootDir: fileURLToPath(new URL("./src", import.meta.url)),
+
+      compilerOptions: {
+        'plugins': [
+          { 'transform': 'typescript-transform-paths', 'useRootDirs': true },
+          { 'transform': 'typescript-transform-paths', 'useRootDirs': true, 'afterDeclarations': true },
+        ],
+      },
+    }),
+  ],
   build: {
-    target: 'esnext',
     lib: {
       entry: getPath('./src/index.ts'),
       name: 'darkvi-ui',

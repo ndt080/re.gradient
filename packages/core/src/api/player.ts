@@ -70,7 +70,7 @@ export class Player {
   }
 }
 
-// Register default modules
+// @NOTE: Register default modules
 Player.use([HTML5Engine, EventEmitter, FullscreenMode]);
 
 declare type CoreModules = EventEmitter & FullscreenMode;
