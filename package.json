@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build:modules": "npm run build -ws",
-    "publish": "lerna publish"
+    "publish": "lerna publish from-package"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.0.0",
