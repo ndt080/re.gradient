@@ -1,17 +1,10 @@
-import type { Player } from './player';
-
-export type PlayerModuleFn = (player: Player) => Player;
-export type PlayerModuleDisposeFn = () => void;
-
-export interface PlayerModule {
-  moduleFn: PlayerModuleFn;
-  dispose(): void;
-}
-
-export interface PlayerModuleContext {
-  player: Player;
-  onDispose(fn: () => void): void;
-}
+import type { Player } from '@/player';
+import type {
+  PlayerModule,
+  PlayerModuleContext,
+  PlayerModuleDisposeFn,
+  PlayerModuleFn,
+} from '@/types/module';
 
 export function useModule(callback: (context: PlayerModuleContext) => void): PlayerModule {
   let disposeHandlerFn: PlayerModuleDisposeFn;

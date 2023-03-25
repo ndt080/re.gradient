@@ -1,13 +1,17 @@
-import { useModule } from '../../api/module';
-import { Events, FullscreenChangeEvents } from '../events-emmiter';
-import { usePlayerExtend } from '../../utils';
+import { useModule, usePlayerExtend } from '@/utils';
 
-export const FullscreenMode = useModule(({ player, onDispose }) => {
+const FullscreenChangeEvents = [
+  'fullscreenchange',
+  'mozfullscreenchange',
+  'webkitfullscreenchange',
+];
+
+const FullscreenMode = useModule(({ player, onDispose }) => {
   const onFullscreenChange = () => {
     player.isFullscreen = !player.isFullscreen;
-  }
+  };
 
-  FullscreenChangeEvents.forEach((event: Events) => {
+  FullscreenChangeEvents.forEach((event: string) => {
     player.$containerEl.addEventListener(event, onFullscreenChange);
   });
 
@@ -36,14 +40,18 @@ export const FullscreenMode = useModule(({ player, onDispose }) => {
   });
 
   onDispose(() => {
-    FullscreenChangeEvents.forEach((event: Events) => {
+    FullscreenChangeEvents.forEach((event: string) => {
       player.$containerEl.removeEventListener(event, onFullscreenChange);
     });
   });
 });
 
-export declare interface FullscreenMode {
+declare interface FullscreenMode {
   isFullscreen: boolean;
+
   toFullScreen(): void;
+
   fromFullScreen(): void;
 }
+
+export default FullscreenMode;

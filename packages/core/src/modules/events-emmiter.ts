@@ -1,6 +1,4 @@
-import { useModule } from '../../api/module';
-import { usePlayerExtend } from '../../utils';
-import { Events } from './values';
+import { useModule, usePlayerExtend } from '@/utils';
 
 type EventMap = HTMLMediaElementEventMap;
 type Event = keyof EventMap | Array<keyof EventMap>;
@@ -10,7 +8,7 @@ const normalizeEvent = (event: Event) => {
   return !Array.isArray(event) ? [event] : event;
 };
 
-export const EventEmitter = useModule(({ player }) => {
+const EventEmitter = useModule(({ player }) => {
   usePlayerExtend({
     on(event: Event, listener: EventListener) {
       normalizeEvent(event).forEach((e) => {
@@ -36,7 +34,7 @@ export const EventEmitter = useModule(({ player }) => {
   });
 });
 
-export declare interface EventEmitter {
+declare interface EventEmitter {
   on(event: Event, listener: EventListener): this;
 
   once(event: Event, listener: EventListener): this;
@@ -44,4 +42,4 @@ export declare interface EventEmitter {
   off(event: Event, listener: EventListener): this;
 }
 
-export { Events };
+export default EventEmitter;

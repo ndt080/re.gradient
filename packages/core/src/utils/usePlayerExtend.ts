@@ -1,12 +1,13 @@
-import { Player } from '../api/player';
+import { Player } from '@/player';
 
-export function usePlayerExtend(prototypes: { [key: string | symbol]: any }) {
+export function usePlayerExtend(prototypes: Record<string | symbol, unknown>) {
   Reflect.ownKeys(prototypes).forEach((property) => {
-    const originalDescriptor = Reflect.getOwnPropertyDescriptor(
-      prototypes,
-      property,
-    );
+    const originalDescriptor = Reflect.getOwnPropertyDescriptor(prototypes, property);
 
-    Reflect.defineProperty(Player.prototype, property, originalDescriptor!);
+    if (!originalDescriptor) {
+      throw new Error('Error during updating of the Player prototype');
+    }
+
+    Reflect.defineProperty(Player.prototype, property, originalDescriptor);
   });
 }

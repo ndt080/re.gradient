@@ -4,7 +4,8 @@
   "author": "Andrei Petrov",
   "workspaces": [
     "packages/core",
-    "packages/ui"
+    "packages/ui",
+    "packages/hls"
   ],
   "scripts": {
     "build:modules": "npm run build -ws",
@@ -14,10 +15,24 @@
     "nanoid": "^4.0.1"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^11.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@types/node": "^18.15.5",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "lerna": "^6.5.1",
     "prettier": "^2.8.2",
-    "stylelint": "^14.16.1",
+    "stylelint": "^15.3.0",
+    "stylelint-config-recommended-scss": "^9.0.1",
+    "stylelint-config-standard": "^31.0.0",
+    "typescript": "^4.9.5",
     "vite": "^4.0.4"
   },
   "publishConfig": {
