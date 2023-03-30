@@ -24,7 +24,7 @@ export default defineConfig({
     target: 'esnext',
   },
   resolve: {
-    alias: [{ find: '@/', replacement: fileURLToPath(new URL('./src', import.meta.url)) }],
+    alias: [{ find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }],
   },
   define: {
     'process.env.NODE_ENV': '"production"',

@@ -5,6 +5,7 @@
   "workspaces": [
     "packages/core",
     "packages/ui",
+    "packages/react-ui",
     "packages/hls"
   ],
   "scripts": {
@@ -27,13 +28,15 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "jsdom": "^21.1.1",
     "lerna": "^6.5.1",
     "prettier": "^2.8.2",
     "stylelint": "^15.3.0",
     "stylelint-config-recommended-scss": "^9.0.1",
     "stylelint-config-standard": "^31.0.0",
     "typescript": "^4.9.5",
-    "vite": "^4.0.4"
+    "vite": "^4.2.1",
+    "vitest": "^0.29.7"
   },
   "publishConfig": {
     "access": "public"

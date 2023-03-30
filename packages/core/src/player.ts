@@ -1,6 +1,6 @@
 import { EngineApi } from './api/engine';
 import { LifecycleApi } from './api/lifecycle';
-import { EventEmitterModule, FullscreenModule, Html5EngineModule } from './modules';
+import type { EventEmitterModule, FullscreenModule } from './modules';
 import { PlayerCore } from './player-core';
 import { createUUID } from './utils';
 
@@ -18,7 +18,10 @@ class Player extends PlayerCore {
     this.$containerEl = containerEl;
 
     Player._modules.forEach((module) => module.moduleFn(this));
-    this.triggerHook('created');
+  }
+
+  togglePlay() {
+    this.$mediaEl.paused || this.$mediaEl.ended ? this.$mediaEl.play() : this.$mediaEl.pause();
   }
 
   dispose() {
@@ -31,8 +34,8 @@ declare interface Player extends IPlayerCore {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;
   readonly $containerEl: HTMLElement;
-}
 
-Player.use([Html5EngineModule, EventEmitterModule, FullscreenModule]);
+  togglePlay(): void;
+}
 
 export { Player };

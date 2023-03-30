@@ -1,0 +1,65 @@
+:root {
+  --drk-vi-volume-level-width: 80px;
+  --drk-vi-volume-level-height: 6px;
+  --drk-vi-volume-level-border-radius: 12px;
+  --drk-vi-volume-level-background: rgba(255, 255, 255, 80%);
+  --drk-vi-volume-level-progress-background: #00b9ae;
+}
+
+.drk-vi-volume {
+  position: relative;
+  width: fit-content;
+  grid-area: volume;
+  pointer-events: all;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    transition: all 0.25s ease-in;
+
+    &:hover, &:active {
+      transition: all 0.25s ease-in;
+      transform: scale(1.2);
+    }
+  }
+
+  &__level {
+    position: relative;
+    width: var(--drk-vi-volume-level-width, 80px);
+    height: var(--drk-vi-volume-level-height, 6px);
+    border-radius: var(--drk-vi-volume-level-border-radius, 12px);
+    overflow: hidden;
+    background-color: var(--drk-vi-volume-level-background, rgba(255, 255, 255, 80%));
+    pointer-events: all;
+    cursor: pointer;
+    transition: all 0.4s;
+    margin-left: 10px;
+
+    &_thumb {
+      display: none;
+    }
+
+    &_track {
+      height: var(--drk-vi-volume-level-height, 6px);
+    }
+
+    &_track.drk-vi-volume__level_track-0 {
+      width: auto;
+      height: var(--drk-vi-volume-level-height, 6px);
+      background-color: var(--drk-vi-volume-level-progress-background, #00b9ae);
+      border-radius: var(--drk-vi-volume-level-border-radius, 12px);
+    }
+  }
+
+  &.drk-vi-volume--muted, &:not(:hover) {
+    .drk-vi-volume__level {
+      width: 0;
+      opacity: 0;
+      margin-left: 0;
+      transition: all 0.4s;
+    }
+  }
+}

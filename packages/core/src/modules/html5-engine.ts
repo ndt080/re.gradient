@@ -6,7 +6,7 @@ const HTML5Engine = useEngineModule(({ player, engine, setOptions, onSourceChang
     priority: -1,
     isSupported: () => true,
     isSourceSupported(source: Source): CanPlayTypeResult {
-      return player.$mediaEl.canPlayType(source.type);
+      return source.type ? player.$mediaEl.canPlayType(source.type) : 'probably';
     },
   });
 
