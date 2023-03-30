@@ -3,9 +3,9 @@ import type {
   isSourceSupportedFn,
   isSupportedFn,
   SourceHandler,
-} from './types/engine';
-import type { Source } from './types/source';
-import { createUUID } from './utils';
+} from '@/types/engine';
+import type { Source } from '@/types/source';
+import { createUUID } from '@/utils';
 
 class Engine {
   readonly id: string;
