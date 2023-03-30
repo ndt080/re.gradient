@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 
+import { PlayerModule } from '../models/module';
 import { PlayerCore } from '../player-core';
-import { PlayerModule } from '../types/module';
 import { useModule } from '../utils';
 
 describe('Player Core', () => {
