@@ -4,7 +4,7 @@ import type {
   PlayerModuleContext,
   PlayerModuleDisposeFn,
   PlayerModuleFn,
-} from '@/types/module';
+} from '@/models/module';
 
 export function useModule(callback: (context: PlayerModuleContext) => void): PlayerModule {
   let disposeHandlerFn: PlayerModuleDisposeFn;

@@ -1,6 +1,6 @@
 import type { Engine } from '@/engine';
 import { PlayerCore } from '@/player-core';
-import type { Source } from '@/types/source';
+import type { Source } from '@/models/source';
 
 export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

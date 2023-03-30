@@ -1,7 +1,7 @@
 import './Player.scss';
 
 import { Player as DarkviPlayer } from '@darkvi/core';
-import { Source } from '@darkvi/core/types/types/source';
+import { Source } from '@darkvi/core/src/models/source';
 import {
   MediaHTMLAttributes,
   MouseEvent,

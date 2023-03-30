@@ -1,5 +1,5 @@
 import { PlayerCore } from '@/player-core';
-import { HookStore, LifecycleHook } from '@/types/lifecycle';
+import { HookStore, LifecycleHook } from '@/models/lifecycle';
 
 export function withLifecycleApi<T extends typeof PlayerCore>(constructor: T) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
