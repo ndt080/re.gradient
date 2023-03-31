@@ -1,5 +1,5 @@
 {
-  "name": "@darkvi/player",
+  "name": "darkvi-player",
   "license": "MPL-2.0",
   "author": "Andrei Petrov",
   "workspaces": [
@@ -44,6 +44,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darkguin/darkvi-player.git"
+    "url": "git+https://github.com/ndt080/darkvi-player.git"
   }
 }
