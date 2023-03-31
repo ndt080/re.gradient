@@ -1,4 +1,4 @@
-name: Darkvi preview CI/CD
+name: Darkvi publish CI/CD
 
 on:
   pull_request:
