@@ -1,9 +1,8 @@
-import { onCreated, onBeforeDisposed } from './api/lifecycle';
-import { Events, FullscreenChangeEvents } from './modules/events-emmiter/values';
-import { useModule } from './api/module';
+import { Html5EngineModule } from '@/modules';
+import { Player } from '@/player';
 
-export * from './api/player';
+Player.use([Html5EngineModule]);
 
-export { useModule };
-export { onCreated, onBeforeDisposed };
-export {  Events, FullscreenChangeEvents };
+export { onBeforeDisposed, onCreated } from './modules';
+export { useEngineModule, useModule } from './utils';
+export { Player };

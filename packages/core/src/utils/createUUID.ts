@@ -1,5 +1,5 @@
-import { nanoid } from "nanoid";
+import { nanoid } from 'nanoid';
 
-export function createUUID(name = "") {
-  return `${name}${name ? "-" : ""}${nanoid(10)}`;
+export function createUUID(name = '') {
+  return `${name}${name ? '-' : ''}${nanoid(10)}`;
 }

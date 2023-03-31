@@ -1,0 +1,13 @@
+# Static files
+/static
+/public
+
+# Build artifacts
+/.vscode
+/.output
+/build
+/dist
+/node_modules
+
+# Additional
+/specs

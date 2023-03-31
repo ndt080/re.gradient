@@ -1,25 +1,12 @@
-import { defineConfig } from 'vite';
+import babel from '@rollup/plugin-babel';
 import { fileURLToPath, URL } from 'url';
-import typescript from '@rollup/plugin-typescript';
+import { defineConfig } from 'vite';
 
 const getPath = (path: string) => {
   return fileURLToPath(new URL(path, import.meta.url));
 };
 
 export default defineConfig({
-  plugins: [
-    typescript({
-      declaration: true,
-      rootDir: fileURLToPath(new URL("./src", import.meta.url)),
-
-      compilerOptions: {
-        'plugins': [
-          { 'transform': 'typescript-transform-paths', 'useRootDirs': true },
-          { 'transform': 'typescript-transform-paths', 'useRootDirs': true, 'afterDeclarations': true },
-        ],
-      },
-    }),
-  ],
   build: {
     lib: {
       entry: getPath('./src/index.ts'),
@@ -34,12 +21,14 @@ export default defineConfig({
           '@darkvi/core': 'Darkvi',
         },
       },
-    }
+      plugins: [babel({ babelHelpers: 'bundled' })],
+
+    },
+    minify: true,
+    target: 'esnext',
   },
   resolve: {
-    alias: [
-      { find: '@', replacement: getPath('./src') },
-    ],
+    alias: [{ find: '@', replacement: getPath('./src') }],
   },
   define: {
     'process.env.NODE_ENV': '"production"',

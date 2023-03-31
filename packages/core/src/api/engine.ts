@@ -1,64 +1,42 @@
-import { PlayerModuleContext, useModule } from './module';
-import { Source } from '../types';
+import type { Engine } from '@/engine';
+import type { Source } from '@/models/source';
+import { PlayerCore } from '@/player-core';
 
-type SourceChangedFn = (src: Source) => void;
+export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return class extends constructor {
+    readonly _engines: Engine[] = [];
 
-type PlayerEngineContext = PlayerModuleContext & {
-  readonly engine: PlayerEngine;
-  setOptions(options: PlayerEngineOptions): void;
-  onSourceChanged(SourceChangedFn): void;
-};
+    installEngine(engine: Engine) {
+      if (!engine || this._engines.indexOf(engine) >= 0) return;
 
-interface PlayerEngineOptions {
-  priority: -1 | 0 | 1;
+      if (engine.isSupported()) {
+        this._engines.push(engine);
+      }
 
-  isSupported(): boolean;
+      this._engines.sort((e1, e2) => (e1.priority < e2.priority ? 1 : 0));
+    }
 
-  isSourceSupported(type: string): CanPlayTypeResult;
+    load(source: Source | string) {
+      if (typeof source === 'string') {
+        source = { src: source } as Source;
+      }
 
-  [key: string]: unknown;
+      if (!source?.src) return;
+
+      this._engines.forEach((engine: Engine) => {
+        if (!engine.isSupported()) return;
+        if (!engine.isSourceSupported(source as Source)) return;
+
+        engine.load(source as Source);
+      });
+    }
+  };
 }
 
-export interface PlayerEngine {
-  priority: -1 | 0 | 1;
-  source: string;
-  sourceType: string;
-
-  isSupported(): boolean;
-
-  load(src: Source): void;
-
-  isSourceSupported(type: string): CanPlayTypeResult;
-
-  [key: string]: unknown;
-}
-
-export function useEngine(callback: (ctx: PlayerEngineContext) => void) {
-  const sourceChangedFns = new Set<SourceChangedFn>();
-
-  const engine = {
-    priority: -1,
-    isSupported: () => true,
-    load(src: Source) {
-      sourceChangedFns.forEach((fn) => fn(src));
-    },
-    isSourceSupported: (_) => 'probably',
-  } as PlayerEngine;
-
-  const setOptions = (options: PlayerEngineOptions) => {
-    engine.priority = options.priority;
-    engine.isSupported = options.isSupported;
-    engine.isSourceSupported = options.isSourceSupported;
-  };
-
-  const onSourceChanged = (fn: SourceChangedFn) => {
-    sourceChangedFns.add(fn);
-  };
-
-  return useModule(({ player, onDispose, ...rest }) => {
-    const context = { engine, player, setOptions, onSourceChanged, onDispose, ...rest } as PlayerEngineContext;
-    callback(context);
-
-    player.installEngine(engine);
-  });
+export declare class EngineApi {
+  installEngine: (engine: Engine) => void;
+  load: (src: Source) => void;
+  readonly _engines: Engine[];
 }
