@@ -7,4 +7,4 @@ Thanks to web components, a minimalistic size and independence of the UI from po
 
 
 ## Contributors
-- <a href="https://github.com/ndt080">`Andrei Petrov`</a> - frontend developer 
+- <a href="https://github.com/ndt080">`Andrei Petrov`</a>
