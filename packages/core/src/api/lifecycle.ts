@@ -1,12 +1,14 @@
 import { PlayerCore } from '@/player-core';
-import { HookStore, LifecycleHook } from '@/types/lifecycle';
+import { HookStore, LifecycleHook } from '@/models/lifecycle';
 
-export function withLifecycleApi<T extends typeof PlayerCore>(_: T) {
-  return class extends PlayerCore {
+export function withLifecycleApi<T extends typeof PlayerCore>(constructor: T) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return class extends constructor {
     readonly _hooks = {} as Record<LifecycleHook, HookStore>;
 
     triggerHook(this, name: LifecycleHook, ...args) {
-      this._hooks[name].hooks.forEach((hook) => hook(this, ...args));
+      this._hooks[name]?.callbacks.forEach((hook) => hook(this, ...args));
     }
 
     dispose() {

@@ -1,14 +1,14 @@
-import { HookFn, LifecycleHook } from '@/types/lifecycle';
+import { HookFn, LifecycleHook } from '@/models/lifecycle';
 
 import { Player } from '../api';
 
-function createHooksStore() {
-  const hooks = new Set<HookFn>();
+export function createHooksStore() {
+  const callbacks = new Set<HookFn>();
 
-  const clear = () => hooks.clear();
-  const dispatch = (fn: HookFn) => hooks.add(fn);
+  const clear = () => callbacks.clear();
+  const dispatch = (fn: HookFn) => callbacks.add(fn);
 
-  return { hooks, dispatch, clear };
+  return { callbacks, dispatch, clear };
 }
 
 function createLifecycleHook(name: LifecycleHook) {

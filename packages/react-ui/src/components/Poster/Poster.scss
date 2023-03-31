@@ -1,0 +1,40 @@
+.drk-vi-poster {
+  background: var(--lpr-poster-background);
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  pointer-events: all;
+  position: absolute;
+  top: 0;
+  transition: all ease-in-out 400ms;
+  width: 100%;
+  z-index: 2;
+  grid-area: poster;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: all ease-in-out 400ms;
+  }
+
+  &__image {
+    filter: brightness(var(--lpr-poster-brightness));
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__icon {
+    left: 50%;
+    opacity: 0.85;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all ease-in-out 400ms;
+    z-index: 3;
+
+    &:hover {
+      opacity: 1;
+      transition: all ease-in-out 400ms;
+    }
+  }
+}

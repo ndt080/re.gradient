@@ -21,8 +21,12 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": false,
     "downlevelIteration": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
+  "include": [
+    "src"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

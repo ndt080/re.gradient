@@ -1,5 +1,5 @@
 import { Engine } from '@/engine';
-import type { EngineContext, EngineOptions, SourceHandler } from '@/types/engine';
+import type { EngineContext, EngineOptions, SourceHandler } from '@/models/engine';
 
 import { useModule } from './useModule';
 

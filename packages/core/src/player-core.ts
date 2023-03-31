@@ -1,10 +1,11 @@
-import { withEngineApi } from './api/engine';
-import { withLifecycleApi } from './api/lifecycle';
-import { PlayerModule } from './types/module';
+import { withEngineApi } from '@/api/engine';
+import { withLifecycleApi } from '@/api/lifecycle';
+
+import { PlayerModule } from './models/module';
 
 @withEngineApi
 @withLifecycleApi
-abstract class PlayerCore {
+class PlayerCore {
   static readonly _modules: PlayerModule[] = [];
 
   static installModule(module: PlayerModule) {
