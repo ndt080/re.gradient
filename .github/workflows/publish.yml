@@ -16,7 +16,7 @@ jobs:
 
       - name: Setup npm credentials
         run: |
-          npm set @alignedcode:registry=https://registry.npmjs.org
+          npm set @darkvi:registry=https://registry.npmjs.org
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.PUBLISH_TOKEN }}"
 
       - name: Install dependencies
