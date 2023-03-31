@@ -20,8 +20,8 @@ function VolumeControl() {
     }
 
     return () => {
-      player.off('volumechange', onVolumeChange);
-      player.off('playing', onVolumeChange);
+      player?.off('volumechange', onVolumeChange);
+      player?.off('playing', onVolumeChange);
     };
   });
 

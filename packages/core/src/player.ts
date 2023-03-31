@@ -1,11 +1,16 @@
+import { withEmitterApi } from '@/api/emitter';
+import { FullscreenApi, withFullscreenApi } from '@/api/fullscreen';
+
+import { EmitterApi } from './api/emitter';
 import { EngineApi } from './api/engine';
 import { LifecycleApi } from './api/lifecycle';
-import type { EventEmitterModule, FullscreenModule } from './modules';
 import { PlayerCore } from './player-core';
 import { createUUID } from './utils';
 
-type IPlayerCore = EventEmitterModule & FullscreenModule & LifecycleApi & EngineApi & PlayerCore;
+type IPlayerCore = FullscreenApi & LifecycleApi & EngineApi & EmitterApi & PlayerCore;
 
+@withFullscreenApi
+@withEmitterApi
 class Player extends PlayerCore {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;

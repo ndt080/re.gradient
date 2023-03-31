@@ -29,7 +29,6 @@ function FullscreenControl() {
   });
 
   const onToggleFullscreen = () => {
-    console.log('onToggleFullscreen');
     setIsFullscreen(!isFullscreen);
   };
 
