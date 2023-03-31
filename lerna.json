@@ -1,18 +1,12 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useWorkspaces": true,
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "publish": {
       "verifyAccess": false,
       "message": "chore(release): publish",
-      "allowBranch": [
-        "dev",
-        "main",
-        "release"
-      ],
+      "allowBranch": ["dev", "main", "release"],
       "conventionalCommits": true,
       "yes": true,
       "fromPackage": true,
@@ -21,5 +15,5 @@
       "patch": true
     }
   },
-  "version": "0.0.1"
+  "version": "0.1.0"
 }
