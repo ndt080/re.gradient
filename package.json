@@ -39,6 +39,7 @@
     "vitest": "^0.29.7"
   },
   "publishConfig": {
+    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "repository": {

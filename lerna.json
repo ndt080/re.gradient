@@ -4,5 +4,21 @@
   "packages": [
     "packages/*"
   ],
+  "command": {
+    "publish": {
+      "verifyAccess": false,
+      "message": "chore(release): publish",
+      "allowBranch": [
+        "main",
+        "release"
+      ],
+      "conventionalCommits": true,
+      "yes": true,
+      "fromPackage": true,
+      "distTag": "alpha",
+      "noGitTagVersion": true,
+      "patch": true
+    }
+  },
   "version": "0.0.1"
 }

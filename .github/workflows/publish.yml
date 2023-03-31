@@ -1,0 +1,35 @@
+name: Darkvi preview CI/CD
+
+on:
+  pull_request:
+    types: [ closed ] # Publishing packages only via pull requests
+    branches:
+      - release
+      - main
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup npm credentials
+        run: |
+          npm set @alignedcode:registry=https://registry.npmjs.org
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.PUBLISH_TOKEN }}"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build workspaces
+        run: npm run build -ws
+
+      - name: Increase version and publish package
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+
+          lerna publish

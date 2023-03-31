@@ -21,6 +21,7 @@
     "build:release": "tsc --emitDeclarationOnly && vite build --mode production"
   },
   "publishConfig": {
+    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "license": "MPL-2.0",
