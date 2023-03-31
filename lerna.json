@@ -9,6 +9,7 @@
       "verifyAccess": false,
       "message": "chore(release): publish",
       "allowBranch": [
+        "dev",
         "main",
         "release"
       ],
