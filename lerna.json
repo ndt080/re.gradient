@@ -1,19 +1,24 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useWorkspaces": true,
-  "packages": ["packages/*"],
+  "packages": [
+    "packages/*"
+  ],
   "command": {
     "publish": {
       "verifyAccess": false,
       "message": "chore(release): publish",
-      "allowBranch": ["dev", "main", "release"],
+      "allowBranch": [
+        "dev",
+        "main",
+        "release"
+      ],
       "conventionalCommits": true,
       "yes": true,
       "fromPackage": true,
-      "distTag": "alpha",
       "noGitTagVersion": true,
       "patch": true
     }
   },
-  "version": "0.2.0"
+  "version": "0.0.0"
 }
