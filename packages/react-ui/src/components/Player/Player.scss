@@ -35,6 +35,7 @@
     display: grid;
     align-items: center;
     box-sizing: border-box;
+    z-index: 1;
 
     padding: var(--drkvi-player-padding, min(3.33%, 22px));
     pointer-events: none;
