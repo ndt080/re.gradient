@@ -15,7 +15,11 @@ export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
         this._engines.push(engine);
       }
 
-      this._engines.sort((e1, e2) => (e1.priority < e2.priority ? 1 : 0));
+      this._engines.sort((e1, e2) => {
+        if (e1.priority < e2.priority) return 1;
+        if (e1.priority > e2.priority) return -1;
+        return 0;
+      });
     }
 
     load(source: Source | string) {
@@ -25,12 +29,13 @@ export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
 
       if (!source?.src) return;
 
-      this._engines.forEach((engine: Engine) => {
-        if (!engine.isSupported()) return;
-        if (!engine.isSourceSupported(source as Source)) return;
+      for (const engine of this._engines) {
+        if (!engine.isSupported()) continue;
+        if (!engine.isSourceSupported(source as Source)) continue;
 
         engine.load(source as Source);
-      });
+        break;
+      }
     }
   };
 }
