@@ -8,22 +8,20 @@ import { PlayIcon } from '@/icons';
 
 interface Props {
   src?: string;
+  waitPlaying?: boolean;
 }
 
-function Poster({ src }: Props) {
-  const player = useContext<Player | null>(PlayerContext);
+function Poster({ src, waitPlaying = false }: Props) {
+  const { $mediaEl, once } = useContext<Player | null>(PlayerContext);
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
   useEffect(() => {
     setIsVisible(true);
-
-    player?.once('playing', () => {
-      setIsVisible(false);
-    });
   }, [src]);
 
   const onPosterClick = async () => {
-    await player?.$mediaEl.play();
+    await $mediaEl.play();
+    waitPlaying ? once('playing', () => setIsVisible(false)) : setIsVisible(false);
   };
 
   return (
