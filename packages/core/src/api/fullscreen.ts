@@ -46,7 +46,7 @@ export function withFullscreenApi<T extends typeof Player>(constructor: T) {
 
     dispose() {
       super.dispose();
-      
+
       for (const event of FullscreenChangeEvents) {
         this.$containerEl.removeEventListener(event, this._onFullscreenChange.bind(this));
       }

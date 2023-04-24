@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import {
   FullscreenControl,
+  Loader,
   PlayControl,
   Player,
   Poster,
@@ -32,7 +33,7 @@ const LAYOUT = {
   gap: '10px',
 };
 
-function DemoApp() {
+function Preview() {
   const [source, setSource] = useState<Record<string, string>>(sources[0]);
 
   return (
@@ -44,18 +45,8 @@ function DemoApp() {
         <FullscreenControl />
         <VolumeControl />
         <Time />
+        <Loader />
       </Player>
-
-      <div style={{ marginTop: '12px' }}>
-        <Player src={source.src} muted>
-          <Poster src={source.poster} />
-          <Timeline />
-          <PlayControl />
-          <FullscreenControl />
-          <VolumeControl />
-          <Time />
-        </Player>
-      </div>
 
       <div style={{ display: 'flex', gap: '16px', margin: '20px 0 0 0' }}>
         <button onClick={() => setSource(sources[0])}>Source 1</button>
@@ -66,4 +57,4 @@ function DemoApp() {
   );
 }
 
-export default DemoApp;
+export default Preview;
