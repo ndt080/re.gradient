@@ -1,4 +1,5 @@
 export { default as FullscreenControl } from './FullscreenControl/FullscreenControl';
+export { default as Loader } from './Loader/Loader';
 export { default as PlayControl } from './PlayControl/PlayControl';
 export { default as Player } from './Player/Player';
 export { PlayerContext } from './Player/PlayerContext';

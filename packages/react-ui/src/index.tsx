@@ -1,4 +1,4 @@
-import DemoApp from '@/DemoApp';
+import Preview from '@/Preview';
 
 export * from './components';
 
@@ -8,7 +8,7 @@ if (import.meta.env.DEV) {
 
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-      <DemoApp />
+      <Preview />
     </React.StrictMode>,
   );
 }
