@@ -44,5 +44,13 @@
 
     padding: var(--drkvi-player-padding, min(3.33%, 22px));
     pointer-events: none;
+
+    grid-template-areas:
+      '. . . . .'
+      'play volume time . fullscreen'
+      'timeline timeline timeline timeline timeline';
+    grid-template-columns: 1fr auto auto;
+    grid-template-rows: 1fr auto auto;
+    gap: 14px;
   }
 }

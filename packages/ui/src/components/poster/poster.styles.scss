@@ -9,8 +9,9 @@
   z-index: 10;
 
   background: var(--drk-vi-poster-background, #0a0a0a);
-  cursor: pointer;
   pointer-events: all;
+  cursor: pointer;
+  transition: visibility ease-in-out 400ms, opacity ease-in-out 400ms;
 
   ::slotted(img) {
     height: 100%;

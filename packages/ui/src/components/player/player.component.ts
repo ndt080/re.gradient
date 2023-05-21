@@ -18,9 +18,10 @@ import $styles from './player.styles.scss?inline';
   styles: $styles,
 })
 export class PlayerComponent extends HTMLElement {
-  static observedAttributes = ['src'];
+  static observedAttributes = ['src', 'layout'];
 
   public _player!: Player;
+
   private _mediaEl!: HTMLMediaElement;
   private _containerEl!: HTMLDivElement;
 
@@ -38,20 +39,25 @@ export class PlayerComponent extends HTMLElement {
     this.id = this._player.id;
 
     this.dispatchCreatedEvent();
+    this._mediaEl.addEventListener('click', this.onPlayerClick);
   }
 
   disconnectedCallback() {
     this._player.dispose();
+    this._mediaEl.removeEventListener('click', this.onPlayerClick);
   }
 
   attributeChangedCallback(name: string, _, value: string | null) {
     this.render();
 
     if (name === 'src' && value) {
-      // load source after mount component
-      setTimeout(() => safeLoadSource(this._player, value));
+      requestAnimationFrame(() => safeLoadSource(this._player, value));
     }
   }
+
+  private onPlayerClick = () => {
+    this._player.togglePlay();
+  };
 
   private dispatchCreatedEvent() {
     const player = this._player;

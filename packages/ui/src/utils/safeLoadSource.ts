@@ -16,7 +16,7 @@ export function safeLoadSource(player: Player, source: string | Source) {
   }
 
   try {
-    player?.load(source);
+    player.load(source);
   } catch {
     throw new Error(`The source "${source}" cannot be loaded. Invalid source`);
   }
