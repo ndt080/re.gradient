@@ -1,15 +1,10 @@
-import babel from '@rollup/plugin-babel';
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
-
-const getPath = (path: string) => {
-  return fileURLToPath(new URL(path, import.meta.url));
-};
 
 export default defineConfig({
   build: {
     lib: {
-      entry: getPath('./src/index.ts'),
+      entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: 'darkvi-ui',
       formats: ['es', 'umd', 'cjs'],
       fileName: (format) => `index.${format}.js`,
@@ -21,14 +16,18 @@ export default defineConfig({
           '@darkvi/core': 'Darkvi',
         },
       },
-      plugins: [babel({ babelHelpers: 'bundled' })],
-
     },
     minify: true,
     target: 'esnext',
   },
   resolve: {
-    alias: [{ find: '@', replacement: getPath('./src') }],
+    alias: [
+      { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+      {
+        find: '@assets',
+        replacement: fileURLToPath(new URL('./public', import.meta.url)),
+      },
+    ],
   },
   define: {
     'process.env.NODE_ENV': '"production"',

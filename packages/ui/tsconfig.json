@@ -2,11 +2,23 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "experimentalDecorators": true,
-    "outDir": "./types",
-    "baseUrl": "."
+    "outDir": "./@types",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "public/*"
+      ]
+    },
+    "types": [
+      "vite/client"
+    ]
   },
   "include": [
     "src/**/*.ts"
   ]
 }
+
 

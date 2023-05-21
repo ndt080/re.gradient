@@ -1,10 +1,10 @@
-import type { Player } from '@/player';
 import type {
   PlayerModule,
   PlayerModuleContext,
   PlayerModuleDisposeFn,
   PlayerModuleFn,
 } from '@/models/module';
+import type { Player } from '@/player';
 
 export function useModule(callback: (context: PlayerModuleContext) => void): PlayerModule {
   let disposeHandlerFn: PlayerModuleDisposeFn;
