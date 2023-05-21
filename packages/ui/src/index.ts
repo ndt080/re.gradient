@@ -1,3 +1,4 @@
-export * from './core/component';
-
-import './components/player/player';
+export * from './components';
+export * from './decorators';
+export * from './types';
+export * from './utils';
