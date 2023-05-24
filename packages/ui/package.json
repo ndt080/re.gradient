@@ -23,7 +23,8 @@
     "build:release": "tsc --emitDeclarationOnly && vite build --mode production"
   },
   "dependencies": {
-    "@darkvi/core": "^0.3.3"
+    "@darkvi/core": "^0.3.3",
+    "rangetouch": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"

@@ -1,24 +1,25 @@
 :host {
-  grid-area: fullscreen;
+  grid-area: settings;
+  align-self: center;
 
   position: relative;
   display: inline-block;
-  align-self: center;
-  width: 22px;
-  height: 22px;
+
+  width: 24px;
+  height: 24px;
 
   cursor: pointer;
   pointer-events: all;
 }
 
-.drk-vi-fullscreen {
+.drk-vi-settings {
   &__icon {
     position: absolute;
     transition: all 0.25s ease-in;
 
     &:hover, &:active {
+      transform: rotate(90deg) scale(1.2);
       transition: all 0.25s ease-in;
-      transform: scale(1.2);
     }
   }
 }

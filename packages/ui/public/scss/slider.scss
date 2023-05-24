@@ -1,0 +1,108 @@
+$slider-height: 6px !default;
+$slider-border-radius: calc(#{$slider-height} * 2) !default;
+$slider-background: rgba(255, 255, 255, 40%) !default;
+$slider-color: #00b9ae !default;
+$slider-thumb-background: white !default;
+$slider-thumb-size: 12px !default;
+
+@mixin slider-track() {
+  height: $slider-height;
+  border: 0;
+  border-radius: $slider-border-radius;
+  background: transparent;
+  transition: box-shadow 0.3s ease;
+  user-select: none;
+}
+
+@mixin slider-thumb() {
+  position: relative;
+  width: $slider-thumb-size;
+  height: $slider-thumb-size;
+
+  border: 0;
+  border-radius: 100%;
+
+  background: $slider-thumb-background;
+  box-shadow: none;
+  user-select: none;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.drk-vi-slider {
+  display: block;
+  min-width: 0;
+  height: $slider-height;
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: $slider-border-radius;
+
+  appearance: none;
+  background: transparent;
+  color: $slider-color;
+
+  transition: box-shadow 0.3s ease;
+
+  // timeline track
+  &::-webkit-slider-runnable-track {
+    @include slider-track;
+    content: '';
+    background-image: linear-gradient(to right, currentColor var(--value, 0%), transparent var(--value, 0%));
+  }
+
+  &::-moz-range-track {
+    @include slider-track;
+  }
+
+  &::-moz-range-progress {
+    background: currentColor;
+    height: $slider-height;
+    border-radius: $slider-border-radius;
+  }
+
+  &::-ms-track {
+    @include slider-track;
+    color: transparent;
+  }
+
+  &::-ms-fill-upper {
+    @include slider-track;
+  }
+
+  &::-ms-fill-lower {
+    @include slider-track;
+    background: currentColor;
+  }
+
+  // timeline thumb
+  &::-webkit-slider-thumb {
+    @include slider-thumb;
+
+    appearance: none;
+    margin-top: calc(((#{$slider-thumb-size} - #{$slider-height}) / 2) * -1);
+  }
+
+  &::-moz-range-thumb {
+    @include slider-thumb;
+  }
+
+  &::-ms-thumb {
+    @include slider-thumb;
+    margin-top: 0;
+  }
+
+  &::-ms-tooltip {
+    display: none;
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}

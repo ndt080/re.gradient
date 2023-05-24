@@ -1,0 +1,38 @@
+$progress-height: 6px !default;
+$progress-border-radius: calc(#{$progress-height} * 2) !default;
+$progress-background: transparent !default;
+$progress-color: rgba(255, 255, 255, 50%) !default;
+
+.drk-vi-progress {
+  height: $progress-height;
+  border: 0;
+  border-radius: $progress-border-radius;
+
+  -webkit-appearance: none;
+  background: $progress-background;
+
+  &::-webkit-progress-bar {
+    background: $progress-background;
+  }
+
+  &::-webkit-progress-value {
+    background: $progress-color;
+    border-radius: 100px;
+    min-width: $progress-height;
+    transition: width 0.2s ease;
+  }
+
+  &::-moz-progress-bar {
+    background: $progress-color;
+    border: 0;
+    border-radius: $progress-border-radius;
+    min-width: $progress-height;
+    transition: width 0.2s ease;
+  }
+
+  &::-ms-fill {
+    border: 0;
+    border-radius: $progress-border-radius;
+    transition: width 0.2s ease;
+  }
+}

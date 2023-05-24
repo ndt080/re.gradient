@@ -1,0 +1,53 @@
+@use '../../../public/scss/slider' with (
+  $slider-height: var(--drk-vi-volume-slider-height, 6px),
+  $slider-background: var(--drk-vi-volume-slider-background, rgba(255, 255, 255, 40%)),
+  $slider-color: var(--drk-vi-volume-slider-color, #00b9ae),
+  $slider-thumb-background: var(--drk-vi-volume-slider-thumb-background, rgba(255, 255, 255, 100%)),
+  $slider-thumb-size: var(--drk-vi-volume-slider-thumb-size, 12px),
+);
+
+:host {
+  grid-area: volume;
+
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.drk-vi-volume {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    transition: all 0.25s ease-in;
+
+    &:hover, &:active {
+      transition: all 0.25s ease-in;
+      transform: scale(1.2);
+    }
+  }
+
+  &__slider {
+    position: relative;
+    width: var(--drk-vi-volume-slider-width, 80px);
+    height: slider.$slider-height;
+    margin-left: 10px;
+    background: slider.$slider-background;
+
+    cursor: pointer;
+    pointer-events: all;
+
+    transition: all 0.4s;
+  }
+
+  &.drk-vi-volume--muted, &:not(:hover) {
+    .drk-vi-volume__slider {
+      width: 0;
+      opacity: 0;
+      margin-left: 0;
+      transition: all 0.4s;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@use '../../../public/scss/slider' with (
+  $slider-height: var(--drk-vi-timeline-height, 6px),
+  $slider-background: var(--drk-vi-timeline-background, rgba(255, 255, 255, 40%)),
+  $slider-color: var(--drk-vi-timeline-color, #00b9ae),
+  $slider-thumb-background: var(--drk-vi-timeline-thumb-background, rgba(255, 255, 255, 100%)),
+  $slider-thumb-size: var(--drk-vi-timeline-thumb-size, 12px),
+);
+
+@use '../../../public/scss/progress' with (
+  $progress-height: var(--drk-vi-timeline-height, 6px),
+  $progress-background:  var(--drk-vi-timeline-buffer-background, transparent),
+  $progress-color:  var(--drk-vi-timeline-buffer-color, rgba(255, 255, 255, 50%)),
+);
+
+:host {
+  grid-area: timeline;
+
+  position: relative;
+  height: slider.$slider-height;
+
+  border: 0;
+  border-radius: slider.$slider-border-radius;
+  background: slider.$slider-background;
+
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.drk-vi-timeline {
+  &__seek, &__buffer {
+    position: absolute;
+    width: 100%;
+  }
+
+  &__seek {
+    z-index: 2;
+  }
+}

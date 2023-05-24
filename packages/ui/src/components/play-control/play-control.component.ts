@@ -44,7 +44,13 @@ export class PlayControlComponent extends HTMLElement {
       width: '22',
       height: '22',
     };
-    
+
     this._containerEl.innerHTML = isPlaying ? PauseIcon(options) : PlayIcon(options);
   };
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'drk-vi-play': PlayControlComponent;
+  }
 }

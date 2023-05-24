@@ -1,9 +1,10 @@
 :host {
-  grid-area: fullscreen;
+  grid-area: pip;
+  align-self: center;
 
   position: relative;
   display: inline-block;
-  align-self: center;
+
   width: 22px;
   height: 22px;
 
@@ -11,7 +12,7 @@
   pointer-events: all;
 }
 
-.drk-vi-fullscreen {
+.drk-vi-pip {
   &__icon {
     position: absolute;
     transition: all 0.25s ease-in;

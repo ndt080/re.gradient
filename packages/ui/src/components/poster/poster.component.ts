@@ -1,3 +1,5 @@
+import { Player } from '@darkvi/core';
+
 import { PlayIcon } from '@/icons';
 
 import { Component } from '../../decorators';
@@ -18,19 +20,36 @@ import $styles from './poster.styles.scss?inline';
   styles: $styles,
 })
 export class PosterComponent extends HTMLElement {
+  private get _player(): Player {
+    return getPlayerInstanceFromControl(this);
+  }
+
   connectedCallback() {
     this.addEventListener('click', this.onPosterClick);
+
+    requestAnimationFrame(() => {
+      this._player.on('playing', this.hidePoster);
+    });
   }
 
   disconnectedCallback() {
+    this._player.off('playing', this.hidePoster);
     this.removeEventListener('click', this.onPosterClick);
   }
 
   private onPosterClick = async () => {
-    this.style.setProperty('visibility', 'hidden');
-    this.style.setProperty('opacity', '0');
-    this.setAttribute('data-hidden', 'true');
-
+    this.hidePoster();
     await getPlayerInstanceFromControl(this)?.togglePlay();
   };
+
+  private hidePoster = () => {
+    this.style.setProperty('visibility', 'hidden');
+    this.style.setProperty('opacity', '0');
+  };
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'drk-vi-poster': PosterComponent;
+  }
 }

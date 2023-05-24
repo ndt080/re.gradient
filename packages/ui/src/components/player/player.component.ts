@@ -18,7 +18,7 @@ import $styles from './player.styles.scss?inline';
   styles: $styles,
 })
 export class PlayerComponent extends HTMLElement {
-  static observedAttributes = ['src', 'layout'];
+  static observedAttributes = ['src', 'poster'];
 
   public _player!: Player;
 
@@ -34,6 +34,7 @@ export class PlayerComponent extends HTMLElement {
     }
 
     transferAttributes(this, this._mediaEl, ['src', 'srcset']);
+    this._mediaEl.muted = Boolean(this.hasAttribute('muted'));
 
     this._player = new Player(this._mediaEl, this._containerEl);
     this.id = this._player.id;
@@ -52,7 +53,10 @@ export class PlayerComponent extends HTMLElement {
 
     if (name === 'src' && value) {
       requestAnimationFrame(() => safeLoadSource(this._player, value));
+      return;
     }
+    
+    transferAttributes(this, this._mediaEl, ['src', 'srcset']);
   }
 
   private onPlayerClick = () => {
@@ -73,3 +77,8 @@ export class PlayerComponent extends HTMLElement {
   }
 }
 
+declare global {
+  interface HTMLElementTagNameMap {
+    'drk-vi-player': PlayerComponent;
+  }
+}

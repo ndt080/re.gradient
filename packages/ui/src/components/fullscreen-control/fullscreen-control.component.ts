@@ -60,3 +60,10 @@ export class FullscreenControlComponent extends HTMLElement {
       : FullscreenIcon(options);
   };
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'drk-vi-fullscreen': FullscreenControlComponent;
+  }
+}
+
