@@ -8,7 +8,7 @@ import $styles from './pip-control.styles.scss?inline';
 @Component({
   selector: 'drk-vi-pip',
   template: `
-    <div class="drk-vi-pip">
+    <div class="drk-vi-pip" tabindex="0">
       ${PipIcon({
         className: 'drk-vi-pip__icon',
         width: '22',
@@ -25,12 +25,16 @@ export class PipControlComponent extends HTMLElement {
 
   private get isSupported(): boolean {
     const isDisabled = this._player.$mediaEl.disablePictureInPicture ?? false;
-    return !document.pictureInPictureEnabled || isDisabled;
+    return document.pictureInPictureEnabled || isDisabled;
   }
 
   connectedCallback() {
     requestAnimationFrame(() => {
-      this.hidden = this.isSupported;
+      // Hide control, if PiP unsupported
+      if (!this.isSupported) {
+        this.style.display = 'none';
+      }
+
       this.addEventListener('click', this.onControlClick);
     });
   }

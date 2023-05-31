@@ -1,7 +1,7 @@
 import { withEngineApi } from '@/api/engine';
 import { withLifecycleApi } from '@/api/lifecycle';
 
-import { PlayerModule } from './models/module';
+import { PlayerModule } from './types/module';
 
 @withEngineApi
 @withLifecycleApi

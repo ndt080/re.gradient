@@ -15,6 +15,7 @@ import $styles from './timeline.styles.scss?inline';
       max="100"
       value="0"
       step="0.01"
+      tabindex="0"
     />
 
     <progress

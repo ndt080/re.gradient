@@ -1,5 +1,5 @@
-import { Player } from '@darkvi/core';
-import { Source } from '@darkvi/core/@types/models/source';
+import type { Player } from '@/player';
+import type { Source } from '@/types/source';
 
 /**
  * safeLoadSource utility
@@ -16,7 +16,7 @@ export function safeLoadSource(player: Player, source: string | Source) {
   }
 
   try {
-    player.load(source);
+    player.loadSource(source);
   } catch {
     throw new Error(`The source "${source}" cannot be loaded. Invalid source`);
   }

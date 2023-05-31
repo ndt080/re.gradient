@@ -1,4 +1,4 @@
-@use '../../../public/scss/slider' with (
+@use '../../../public/scss/components/slider' with (
   $slider-height: var(--drk-vi-timeline-height, 6px),
   $slider-background: var(--drk-vi-timeline-background, rgba(255, 255, 255, 40%)),
   $slider-color: var(--drk-vi-timeline-color, #00b9ae),
@@ -6,7 +6,7 @@
   $slider-thumb-size: var(--drk-vi-timeline-thumb-size, 12px),
 );
 
-@use '../../../public/scss/progress' with (
+@use '../../../public/scss/components/progress' with (
   $progress-height: var(--drk-vi-timeline-height, 6px),
   $progress-background:  var(--drk-vi-timeline-buffer-background, transparent),
   $progress-color:  var(--drk-vi-timeline-buffer-color, rgba(255, 255, 255, 50%)),

@@ -1,6 +1,6 @@
 import type { Engine } from '@/engine';
-import type { Source } from '@/models/source';
 import { PlayerCore } from '@/player-core';
+import type { Source } from '@/types/source';
 
 export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -22,7 +22,7 @@ export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
       });
     }
 
-    load(source: Source | string) {
+    loadSource(source: Source | string) {
       if (typeof source === 'string') {
         source = { src: source } as Source;
       }
@@ -42,6 +42,6 @@ export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
 
 export declare class EngineApi {
   installEngine: (engine: Engine) => void;
-  load: (src: Source) => void;
+  loadSource: (src: Source | string) => void;
   readonly _engines: Engine[];
 }

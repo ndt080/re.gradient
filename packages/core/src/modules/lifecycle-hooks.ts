@@ -1,4 +1,4 @@
-import { HookFn, LifecycleHook } from '@/models/lifecycle';
+import { HookFn, LifecycleHook } from '@/types/lifecycle';
 
 import { Player } from '../api';
 

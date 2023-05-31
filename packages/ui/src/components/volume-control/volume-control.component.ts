@@ -1,8 +1,7 @@
 import { Player } from '@darkvi/core';
 
-import { MutedIcon, SoundIcon } from '@/icons';
-
 import { Component } from '../../decorators';
+import { MutedIcon, SoundIcon } from '../../icons';
 import { getNativeEl, getPlayerInstanceFromControl } from '../../utils';
 import $styles from './volume-control.styles.scss?inline';
 

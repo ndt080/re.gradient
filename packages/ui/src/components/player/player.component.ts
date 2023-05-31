@@ -1,14 +1,16 @@
-import { Player } from '@darkvi/core';
+import { Player, safeLoadSource } from '@darkvi/core';
 
 import { Component } from '../../decorators';
-import { getNativeEl, safeLoadSource, transferAttributes } from '../../utils';
+import { getNativeEl, transferAttributes } from '../../utils';
 import $styles from './player.styles.scss?inline';
+
+const EXCLUDE_ATTRIBUTES = ['src', 'srcset', 'style'];
 
 @Component({
   selector: 'drk-vi-player',
   template: `
     <div data-container class="drk-vi-player">
-      <video data-media playsInline class="drk-vi-player__media"></video>
+      <video data-media playsInline crossorigin class="drk-vi-player__media"></video>
 
       <div class="drk-vi-player__layout">
         <slot></slot>
@@ -33,7 +35,7 @@ export class PlayerComponent extends HTMLElement {
       throw new Error('Error when creating the player view');
     }
 
-    transferAttributes(this, this._mediaEl, ['src', 'srcset']);
+    transferAttributes(this, this._mediaEl, EXCLUDE_ATTRIBUTES);
     this._mediaEl.muted = Boolean(this.hasAttribute('muted'));
 
     this._player = new Player(this._mediaEl, this._containerEl);
@@ -49,19 +51,19 @@ export class PlayerComponent extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, _, value: string | null) {
-    this.render();
-
     if (name === 'src' && value) {
-      requestAnimationFrame(() => safeLoadSource(this._player, value));
+      requestAnimationFrame(() => {
+        safeLoadSource(this._player, value);
+      });
       return;
     }
-    
-    transferAttributes(this, this._mediaEl, ['src', 'srcset']);
+
+    requestAnimationFrame(() => {
+      transferAttributes(this, this._mediaEl, EXCLUDE_ATTRIBUTES);
+    });
   }
 
-  private onPlayerClick = () => {
-    this._player.togglePlay();
-  };
+  private onPlayerClick = () => this._player.togglePlay();
 
   private dispatchCreatedEvent() {
     const player = this._player;

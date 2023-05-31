@@ -19,12 +19,11 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --emitDeclarationOnly && vite build",
+    "build": "tsc --emitDeclarationOnly && vite build --mode production",
     "build:release": "tsc --emitDeclarationOnly && vite build --mode production"
   },
   "dependencies": {
-    "@darkvi/core": "^0.3.3",
-    "rangetouch": "^2.0.1"
+    "@darkvi/core": "^0.3.3"
   },
   "publishConfig": {
     "access": "public"

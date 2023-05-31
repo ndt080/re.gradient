@@ -1,5 +1,5 @@
 import { useEngineModule } from '@darkvi/core';
-import { Source } from '@darkvi/core/src/models/source';
+import { Source } from '@darkvi/core/@types/types/source';
 import Hls, { ErrorData, Events, HlsConfig } from 'hls.js';
 
 const HLSModule = function (config?: Partial<HlsConfig>) {

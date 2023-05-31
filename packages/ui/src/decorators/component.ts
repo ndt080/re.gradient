@@ -7,7 +7,12 @@ import { ComponentDecoratorOptions } from '@/types';
  * @param {ComponentDecoratorOptions} options - parameters for initializing the web component
  * @constructor {CustomElementConstructor}
  */
-export function Component({ selector, styles, template }: ComponentDecoratorOptions) {
+export function Component({
+  selector,
+  styles,
+  template,
+  attributes = {},
+}: ComponentDecoratorOptions) {
   const createTemplate = (text: string) => {
     const el = document.createElement('template');
     el.innerHTML = text;
@@ -30,6 +35,11 @@ export function Component({ selector, styles, template }: ComponentDecoratorOpti
       const sheet = new CSSStyleSheet();
       sheet.replaceSync(styles || '');
       this.shadowRoot!.adoptedStyleSheets = [sheet];
+
+      Object.keys(attributes).forEach((key) => {
+        if (this.hasAttribute(key)) return;
+        this.setAttribute(key, attributes[key]);
+      });
 
       // Calling a callback that it has been overridden in HTMLElement
       originalConnectedCallback?.call(this);

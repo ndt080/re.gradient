@@ -1,8 +1,5 @@
-import { Player } from '@darkvi/core';
-
 import { Component } from '../../decorators';
 import { SettingsIcon } from '../../icons';
-import { getPlayerInstanceFromControl } from '../../utils';
 import $styles from './settings.styles.scss?inline';
 
 @Component({
@@ -19,9 +16,9 @@ import $styles from './settings.styles.scss?inline';
   styles: $styles,
 })
 export class SettingsComponent extends HTMLElement {
-  private get _player(): Player {
-    return getPlayerInstanceFromControl(this);
-  }
+  // private get _player(): Player {
+  //   return getPlayerInstanceFromControl(this);
+  // }
 
   connectedCallback() {
     this.addEventListener('click', this.onControlClick);

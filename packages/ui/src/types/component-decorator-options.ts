@@ -5,4 +5,5 @@ export interface ComponentDecoratorOptions {
   template: string;
   /** CSS component styles in string format for initializing CSSStyleSheet */
   styles?: string;
+  attributes?: Record<string, string>;
 }
