@@ -15,21 +15,7 @@ import $styles from './settings.styles.scss?inline';
   `,
   styles: $styles,
 })
-export class SettingsComponent extends HTMLElement {
-  // private get _player(): Player {
-  //   return getPlayerInstanceFromControl(this);
-  // }
-
-  connectedCallback() {
-    this.addEventListener('click', this.onControlClick);
-  }
-
-  disconnectedCallback() {
-    this.removeEventListener('click', this.onControlClick);
-  }
-
-  private onControlClick = async () => {};
-}
+export class SettingsComponent extends HTMLElement {}
 
 declare global {
   interface HTMLElementTagNameMap {
