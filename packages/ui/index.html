@@ -20,12 +20,13 @@
     We're sorry but v-card doesn't work properly without JavaScript enabled. Please enable it to continue.
   </strong>
 </noscript>
-<!--src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4'-->
+
+<drk-vi-icon name='exit-fullscreen'></drk-vi-icon>
 
 <drk-vi-player
-  poster='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg'
   src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4'
   style='width: 800px'
+  tracks='[{"default":"true", "kind":"captions", "label":"English", "srclang":"en", "src":"https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"}]'
 >
   <!--  <source size='576' slot='source' src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4'-->
   <!--          type='video/mp4'>-->
@@ -34,22 +35,19 @@
   <!--  <source size='1080' slot='source' src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4'-->
   <!--          type='video/mp4'>-->
 
-  <track default='' kind='captions' label='English' slot='tracks'
-         src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt' srclang='en'>
-  <track kind='captions' label='Français' slot='tracks'
-         src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt'
-         srclang='fr'>
-
-  <!--  <drk-vi-poster>-->
-  <!--    <img alt='poster' src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg' />-->
-  <!--  </drk-vi-poster>-->
+  <drk-vi-poster>
+    <img alt='poster' src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg' />
+  </drk-vi-poster>
 
   <drk-vi-play></drk-vi-play>
   <drk-vi-volume></drk-vi-volume>
   <drk-vi-time></drk-vi-time>
   <drk-vi-timeline></drk-vi-timeline>
   <drk-vi-loader></drk-vi-loader>
-  <drk-vi-settings></drk-vi-settings>
+  <drk-vi-settings>
+    <div tabindex='-1'>Subtitle</div>
+    <div tabindex='-1'>Speed</div>
+  </drk-vi-settings>
   <drk-vi-pip></drk-vi-pip>
   <drk-vi-fullscreen></drk-vi-fullscreen>
 </drk-vi-player>

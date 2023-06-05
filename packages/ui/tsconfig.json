@@ -2,6 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "experimentalDecorators": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "texsaur",
     "outDir": "./@types",
     "baseUrl": ".",
     "paths": {
@@ -17,8 +19,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }
-
-

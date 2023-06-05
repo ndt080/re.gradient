@@ -1,3 +1,4 @@
+@use '../../../public/scss/components/tooltip';
 @use '../../../public/scss/components/slider' with (
   $slider-height: var(--drk-vi-volume-slider-height, 6px),
   $slider-background: var(--drk-vi-volume-slider-background, rgba(255, 255, 255, 40%)),

@@ -3,7 +3,7 @@ export interface IconProps {
   width?: string;
   height?: string;
   viewBox?: string;
-  children?: string;
+  children?: Node | Node[];
 }
 
 export function Icon({
@@ -13,16 +13,16 @@ export function Icon({
   className = '',
   children,
 }: IconProps) {
-  return `
+  return (
     <svg
-      width='${width}'
-      height='${height}'
-      class='${className}'
-      viewBox='${viewBox}'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      class={className}
+      viewBox={viewBox}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      ${children}
+      {children}
     </svg>
-  `;
+  );
 }

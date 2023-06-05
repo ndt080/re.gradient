@@ -12,6 +12,7 @@ export function transferAttributes(
   toEl: HTMLElement,
   excludeAttributes: string[] = [],
 ) {
+
   for (const name of fromEl.getAttributeNames()) {
     if (excludeAttributes.includes(name)) continue;
 

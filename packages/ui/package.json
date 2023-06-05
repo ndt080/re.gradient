@@ -23,7 +23,9 @@
     "build:release": "tsc --emitDeclarationOnly && vite build --mode production"
   },
   "dependencies": {
-    "@darkvi/core": "^0.3.3"
+    "@darkvi/core": "^0.3.3",
+    "@floating-ui/dom": "^1.2.9",
+    "texsaur": "^0.8.0"
   },
   "publishConfig": {
     "access": "public"

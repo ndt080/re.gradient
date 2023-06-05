@@ -26,19 +26,15 @@
   transform: scale(1);
   transition: all ease-in-out 400ms;
 
-  &:hover {
-    transform: scale(1.01);
-    transition: all ease-in-out 400ms;
-  }
-
   &__icon {
-    left: 50%;
-    opacity: 0.85;
     position: absolute;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    transition: all ease-in-out 400ms;
     z-index: 4;
+
+    opacity: 0.85;
+    transition: all ease-in-out 400ms;
 
     &:hover {
       opacity: 1;

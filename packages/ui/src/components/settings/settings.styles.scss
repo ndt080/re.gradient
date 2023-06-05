@@ -1,3 +1,5 @@
+@use '../../../public/scss/components/tooltip';
+
 :host {
   grid-area: settings;
   align-self: center;
@@ -15,6 +17,9 @@
 .drk-vi-settings {
   &__icon {
     position: absolute;
+    color: white;
+    font-size: 24px;
+    transform-origin: center;
     transition: all 0.25s ease-in;
 
     &:hover, &:active {
