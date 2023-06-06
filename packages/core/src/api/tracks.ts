@@ -1,9 +1,7 @@
 import type { Player } from '@/player';
-import type { Track } from '@/types';
+import type { SpreadableConstructor, Track } from '@/types';
 
-export function withTracksApi<T extends typeof Player>(constructor: T) {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+export function withTracksApi<T extends SpreadableConstructor<Player>>(constructor: T) {
   return class extends constructor {
     _tracks: Track[] = [];
     _trackElements: HTMLTrackElement[] = [];

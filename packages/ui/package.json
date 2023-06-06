@@ -19,7 +19,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --emitDeclarationOnly && vite build --mode production",
+    "build": "tsc --emitDeclarationOnly && vite build",
     "build:release": "tsc --emitDeclarationOnly && vite build --mode production"
   },
   "dependencies": {

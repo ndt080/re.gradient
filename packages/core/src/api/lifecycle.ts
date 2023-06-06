@@ -1,9 +1,7 @@
-import { PlayerCore } from '@/player-core';
-import { HookStore, LifecycleHook } from '@/types/lifecycle';
+import type { PlayerCore } from '@/player-core';
+import type { HookStore, LifecycleHook, SpreadableConstructor } from '@/types';
 
-export function withLifecycleApi<T extends typeof PlayerCore>(constructor: T) {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+export function withLifecycleApi<T extends SpreadableConstructor<PlayerCore>>(constructor: T) {
   return class extends constructor {
     readonly _hooks = {} as Record<LifecycleHook, HookStore>;
 

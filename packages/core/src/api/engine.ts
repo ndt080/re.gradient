@@ -1,10 +1,8 @@
 import type { Engine } from '@/engine';
-import { PlayerCore } from '@/player-core';
-import type { Source } from '@/types/source';
+import type { PlayerCore } from '@/player-core';
+import type { Source, SpreadableConstructor } from '@/types';
 
-export function withEngineApi<T extends typeof PlayerCore>(constructor: T) {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+export function withEngineApi<T extends SpreadableConstructor<PlayerCore>>(constructor: T) {
   return class extends constructor {
     readonly _engines: Engine[] = [];
 

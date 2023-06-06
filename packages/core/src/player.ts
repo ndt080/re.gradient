@@ -35,9 +35,14 @@ class Player extends PlayerCore {
   }
 }
 
-type IPlayerCore = FullscreenApi & TracksApi & LifecycleApi & EngineApi & EmitterApi & PlayerCore;
+type PlayerCoreWithApis = FullscreenApi &
+  TracksApi &
+  LifecycleApi &
+  EngineApi &
+  EmitterApi &
+  PlayerCore;
 
-declare interface Player extends IPlayerCore {
+declare interface Player extends PlayerCoreWithApis {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;
   readonly $containerEl: HTMLElement;
