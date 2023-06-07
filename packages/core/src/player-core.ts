@@ -1,7 +1,6 @@
-import { withEngineApi } from '@/api/engine';
-import { withLifecycleApi } from '@/api/lifecycle';
-
-import { PlayerModule } from './models/module';
+import { withEngineApi } from './api/engine';
+import { withLifecycleApi } from './api/lifecycle';
+import { PlayerModule } from './types';
 
 @withEngineApi
 @withLifecycleApi
@@ -25,4 +24,5 @@ class PlayerCore {
 }
 
 export { PlayerCore };
+
 

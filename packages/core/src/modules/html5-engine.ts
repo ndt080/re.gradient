@@ -1,4 +1,4 @@
-import type { Source } from '@/models/source';
+import type { Source } from '@/types/source';
 import { useEngineModule } from '@/utils';
 
 const HTML5Engine = useEngineModule(({ player, engine, setOptions, onSourceChanged }) => {

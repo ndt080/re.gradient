@@ -1,3 +1,4 @@
-export * from './core/component';
+import '../public/scss/main.scss';
 
-import './components/player/player';
+export * from './components';
+export * from './utils';

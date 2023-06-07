@@ -2,11 +2,24 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "experimentalDecorators": true,
-    "outDir": "./types",
-    "baseUrl": "."
+    "jsx": "react-jsx",
+    "jsxImportSource": "texsaur",
+    "outDir": "./@types",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "public/*"
+      ]
+    },
+    "types": [
+      "vite/client"
+    ]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }
-

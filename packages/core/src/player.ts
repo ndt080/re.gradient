@@ -4,13 +4,13 @@ import { FullscreenApi, withFullscreenApi } from '@/api/fullscreen';
 import { EmitterApi } from './api/emitter';
 import { EngineApi } from './api/engine';
 import { LifecycleApi } from './api/lifecycle';
+import { TracksApi, withTracksApi } from './api/tracks';
 import { PlayerCore } from './player-core';
 import { createUUID } from './utils';
 
-type IPlayerCore = FullscreenApi & LifecycleApi & EngineApi & EmitterApi & PlayerCore;
-
 @withFullscreenApi
 @withEmitterApi
+@withTracksApi
 class Player extends PlayerCore {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;
@@ -25,7 +25,7 @@ class Player extends PlayerCore {
     Player._modules.forEach((module) => module.moduleFn(this));
   }
 
-  togglePlay() {
+  togglePlay(): Promise<void> | void {
     this.$mediaEl.paused || this.$mediaEl.ended ? this.$mediaEl.play() : this.$mediaEl.pause();
   }
 
@@ -35,7 +35,14 @@ class Player extends PlayerCore {
   }
 }
 
-declare interface Player extends IPlayerCore {
+type PlayerCoreWithApis = FullscreenApi &
+  TracksApi &
+  LifecycleApi &
+  EngineApi &
+  EmitterApi &
+  PlayerCore;
+
+declare interface Player extends PlayerCoreWithApis {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;
   readonly $containerEl: HTMLElement;

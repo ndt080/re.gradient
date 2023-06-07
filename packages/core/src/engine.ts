@@ -3,8 +3,8 @@ import type {
   isSourceSupportedFn,
   isSupportedFn,
   SourceHandler,
-} from '@/models/engine';
-import type { Source } from '@/models/source';
+} from '@/types/engine';
+import type { Source } from '@/types/source';
 import { createUUID } from '@/utils';
 
 class Engine {

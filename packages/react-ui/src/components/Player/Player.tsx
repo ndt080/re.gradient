@@ -1,7 +1,7 @@
 import './Player.scss';
 
 import { Player as DarkviPlayer } from '@darkvi/core';
-import { Source } from '@darkvi/core/src/models/source';
+import { Source } from '@darkvi/core/src/types/source';
 import {
   MediaHTMLAttributes,
   MouseEvent,
@@ -42,13 +42,13 @@ function Player({
       onCreated(player);
       player.triggerHook('created');
 
-      if (src) player?.load(src);
+      if (src) player?.loadSource(src);
     }
 
     return () => player?.dispose();
   }, []);
 
-  player?.load(src);
+  player?.loadSource(src);
 
   const onPlayerClick = (e: MouseEvent<HTMLVideoElement>) => {
     onClick(e);

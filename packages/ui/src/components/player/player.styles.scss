@@ -1,0 +1,62 @@
+@use '../../../public/scss/main';
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::cue {
+  color: var(--drk-vi-player-cue-color, #ccc);
+  background: var(--drk-vi-player-cue-background, rgba(0, 0, 0, 0.8));
+}
+
+.drk-vi-player {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0 solid transparent;
+  border-radius: var(--drk-vi-player-border-radius, 12px);
+  background: var(--drk-vi-player-background, #0a0a0a);
+  aspect-ratio: var(--drk-vi-player-aspect-ratio, 16 / 9);
+
+  &__media {
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+  }
+
+  &__layout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 2;
+
+    padding: var(--drk-vi-player-padding, min(3.33%, 16px));
+    pointer-events: none;
+
+    grid-template-areas: var(--drk-vi-player-grid-areas, '. . . . . . .' 'play volume time timeline settings pip fullscreen');
+    grid-template-columns: var(--drk-vi-player-grid-columns, auto auto auto 1fr auto auto auto);
+    grid-template-rows: var(--drk-vi-player-grid-rows, 1fr auto);
+
+    gap: var(--drk-vi-player-grid-gap, 12px);
+  }
+
+  &:fullscreen {
+    border-radius: 0;
+  }
+}

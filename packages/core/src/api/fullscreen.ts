@@ -1,4 +1,5 @@
 import type { Player } from '@/player';
+import type { SpreadableConstructor } from '@/types';
 
 const FullscreenChangeEvents = [
   'fullscreenchange',
@@ -6,13 +7,11 @@ const FullscreenChangeEvents = [
   'webkitfullscreenchange',
 ];
 
-export function withFullscreenApi<T extends typeof Player>(constructor: T) {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+export function withFullscreenApi<T extends SpreadableConstructor<Player>>(constructor: T) {
   return class extends constructor {
     isFullscreen = false;
 
-    constructor(...args: ConstructorParameters<typeof Player>) {
+    constructor(...args) {
       super(...args);
 
       for (const event of FullscreenChangeEvents) {
