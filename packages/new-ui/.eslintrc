@@ -1,0 +1,52 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "simple-import-sort"
+  ],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:svelte/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [
+      ".svelte"
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.svelte"
+      ],
+      "parser": "svelte-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+      }
+    }
+    // ...
+  ],
+  "rules": {
+    "import/named": [
+      "off"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
+}

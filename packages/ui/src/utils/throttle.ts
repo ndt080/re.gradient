@@ -16,5 +16,6 @@ export function throttle(callback: (...args) => unknown, delay: number) {
       prev = now;
       return callback(...args);
     }
+    return undefined;
   };
 }
