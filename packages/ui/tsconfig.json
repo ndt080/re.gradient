@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "experimentalDecorators": true,
+    "module": "esnext",
     "jsx": "react-jsx",
     "jsxImportSource": "texsaur",
     "outDir": "./@types",

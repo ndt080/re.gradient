@@ -1,6 +1,5 @@
 /// <reference types="vitest" />
 
-import babel from '@rollup/plugin-babel';
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 
@@ -11,9 +10,6 @@ export default defineConfig({
       name: 'darkvi-core',
       formats: ['es', 'umd', 'cjs'],
       fileName: (format) => `index.${format}.js`,
-    },
-    rollupOptions: {
-      plugins: [babel({ babelHelpers: 'bundled' })],
     },
     minify: true,
     target: 'esnext',

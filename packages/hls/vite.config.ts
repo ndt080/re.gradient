@@ -1,4 +1,3 @@
-import babel from '@rollup/plugin-babel';
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
 
@@ -18,7 +17,6 @@ export default defineConfig({
           'hls.js': 'Hls',
         },
       },
-      plugins: [babel({ babelHelpers: 'bundled' })],
     },
     minify: true,
     target: 'esnext',
