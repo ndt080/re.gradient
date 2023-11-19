@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "vite/client"
+    ],
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "./@types",
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@shared/*": [
+        "src/shared/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "exclude": [
+    "dist",
+    "@types",
+    "node_modules"
+  ]
+}

@@ -1,31 +1,39 @@
-import { withEmitterApi } from '@/api/emitter';
-import { FullscreenApi, withFullscreenApi } from '@/api/fullscreen';
-import { PlayerModule } from '@/types';
+import EmitterApiModule from '@/modules/emitterApi';
+import EngineApiModule, { HTML5Engine } from '@/modules/engineApi';
+import FullscreenApiModule from '@/modules/fullscreenApi';
+import TracksApiModule from '@/modules/trackApi';
+import { HookStore, LifecycleHook, PlayerModule } from '@/types';
 
-import { EmitterApi } from './api/emitter';
-import { EngineApi } from './api/engine';
-import { LifecycleApi } from './api/lifecycle';
-import { TracksApi, withTracksApi } from './api/tracks';
-import { PlayerCore } from './player-core';
 import { createUUID } from './utils';
 
-@withFullscreenApi
-@withEmitterApi
-@withTracksApi
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-class Player extends PlayerCore {
+const DefaultModules: PlayerModule[] = [
+  EmitterApiModule,
+  FullscreenApiModule,
+  EngineApiModule,
+  TracksApiModule,
+  HTML5Engine,
+];
+
+export class Player {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;
   readonly $containerEl: HTMLElement;
 
+  readonly __modules__: PlayerModule[] = [];
+  readonly __hooks__ = {} as Record<LifecycleHook, HookStore>;
+
   constructor(mediaEl: HTMLMediaElement, containerEl: HTMLElement, modules: PlayerModule[] = []) {
-    super();
     this.id = createUUID('player');
     this.$mediaEl = mediaEl;
     this.$containerEl = containerEl;
 
-    Player.use(modules);
-    Player._modules.forEach((module) => module.moduleFn(this));
+    this.installModules(DefaultModules);
+    this.installModules(modules);
+    this.__modules__.forEach((module) => module.moduleFn(this));
+  }
+
+  triggerHook(this, name: LifecycleHook, ...args) {
+    this.__hooks__[name]?.callbacks.forEach((hook) => hook(this, ...args));
   }
 
   togglePlay(): Promise<void> | void {
@@ -34,24 +42,20 @@ class Player extends PlayerCore {
 
   dispose() {
     this.triggerHook('before_disposed');
-    super.dispose();
+    this.__modules__.forEach((module) => module.dispose());
+    Object.values(this.__hooks__).forEach((store: HookStore) => store.clear());
+  }
+
+  hotInstallModules(modules: PlayerModule[]) {
+    this.installModules(modules, true);
+  }
+
+  installModules(modules: PlayerModule[], hot = false) {
+    for (const module of modules) {
+      if (Boolean(module) && this.__modules__.indexOf(module) < 0) {
+        this.__modules__.push(module);
+        if (hot) module.moduleFn(this);
+      }
+    }
   }
 }
-
-type PlayerCoreWithApis = FullscreenApi &
-  TracksApi &
-  LifecycleApi &
-  EngineApi &
-  EmitterApi &
-  PlayerCore;
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-declare interface Player extends PlayerCoreWithApis {
-  readonly id: string;
-  readonly $mediaEl: HTMLMediaElement;
-  readonly $containerEl: HTMLElement;
-
-  togglePlay(): void;
-}
-
-export { Player };

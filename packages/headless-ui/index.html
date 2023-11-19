@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <link href='/vite.svg' rel='icon' type='image/svg+xml' />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+  <title>Demo page</title>
+
+  <style>
+    body {
+      padding: 12px;
+      background: #1e1e1e;
+    }
+  </style>
+</head>
+
+<body>
+<div id='app'></div>
+
+
+<re-player
+  poster='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg'
+  src='https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4'
+  tracks='[{"default":"true", "kind":"captions", "label":"English", "srclang":"en", "src":"https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"}]'
+>
+  <re-control-group>
+    <re-time></re-time>
+
+    <re-play></re-play>
+    <re-volume></re-volume>
+    <re-timeline></re-timeline>
+    <re-pip></re-pip>
+
+    <re-settings></re-settings>
+    <re-fullscreen></re-fullscreen>
+  </re-control-group>
+</re-player>
+
+<script src='/src/index.ts' type='module'></script>
+</body>
+</html>

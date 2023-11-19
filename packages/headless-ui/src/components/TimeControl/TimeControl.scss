@@ -1,0 +1,100 @@
+@mixin thumb {
+  position: relative;
+
+  width: var(--time-control-range-thumb-size);
+  height: var(--time-control-range-thumb-size);
+
+  border-top-right-radius: var(--time-control-range-border-radius);
+  border-bottom-right-radius: var(--time-control-range-border-radius);
+  border: 0;
+  box-shadow: none;
+
+  background: currentColor;
+}
+
+@mixin track {
+  height: var(--time-control-range-height);
+  border: 0;
+  border-radius: var(--time-control-range-border-radius);
+  background: transparent;
+  transition: box-shadow 0.3s ease;
+}
+
+input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  height: var(--time-control-range-height);
+  min-height: var(--time-control-range-height);
+  max-height: var(--time-control-range-height);
+  border-radius: var(--time-control-range-border-radius);
+
+  padding: 0;
+  margin: 0;
+}
+
+input::-webkit-slider-thumb {
+  @include thumb;
+  appearance: none;
+  margin-top: calc(((var(--time-control-range-thumb-size) - var(--time-control-range-height)) / 2) * -1);
+}
+
+input::-moz-range-thumb {
+  @include thumb;
+}
+
+input::-ms-thumb {
+  @include thumb;
+  margin-top: 0;
+}
+
+input::-moz-range-track {
+  @include track;
+}
+
+input::-webkit-slider-runnable-track {
+  @include track;
+  content: '';
+  background-image: linear-gradient(to right, currentColor var(--value, 0%), transparent var(--value, 0%));
+}
+
+
+input::-moz-range-progress {
+  background: currentColor;
+}
+
+progress {
+  appearance: none;
+  -webkit-appearance: none;
+
+  height: var(--time-control-range-height);
+  border: 0;
+  border-radius: var(--time-control-range-border-radius);
+  background: transparent;
+
+  &::-webkit-progress-bar {
+    background: transparent;
+  }
+
+  &::-webkit-progress-value {
+    background: currentColor;
+    border-radius: var(--time-control-range-border-radius);
+    min-width: var(--time-control-range-height);
+    transition: width 0.2s ease;
+  }
+
+  &::-moz-progress-bar {
+    background: currentColor;
+    border: 0;
+    border-radius: var(--time-control-range-border-radius);
+    min-width: var(--time-control-range-height);
+    transition: width 0.2s ease;
+  }
+
+  &::-ms-fill {
+    border: 0;
+    border-radius: var(--time-control-range-border-radius);
+    transition: width 0.2s ease;
+  }
+}
+

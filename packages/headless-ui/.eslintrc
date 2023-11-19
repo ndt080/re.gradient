@@ -1,0 +1,36 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "simple-import-sort",
+    "solid"
+  ],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:solid/recommended",
+    "plugin:solid/typescript",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "import/named": [
+      "off"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
+}
