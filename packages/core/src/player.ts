@@ -1,5 +1,6 @@
 import { withEmitterApi } from '@/api/emitter';
 import { FullscreenApi, withFullscreenApi } from '@/api/fullscreen';
+import { PlayerModule } from '@/types';
 
 import { EmitterApi } from './api/emitter';
 import { EngineApi } from './api/engine';
@@ -11,17 +12,19 @@ import { createUUID } from './utils';
 @withFullscreenApi
 @withEmitterApi
 @withTracksApi
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class Player extends PlayerCore {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;
   readonly $containerEl: HTMLElement;
 
-  constructor(mediaEl: HTMLMediaElement, containerEl: HTMLElement) {
+  constructor(mediaEl: HTMLMediaElement, containerEl: HTMLElement, modules: PlayerModule[] = []) {
     super();
     this.id = createUUID('player');
     this.$mediaEl = mediaEl;
     this.$containerEl = containerEl;
 
+    Player.use(modules);
     Player._modules.forEach((module) => module.moduleFn(this));
   }
 
@@ -42,6 +45,7 @@ type PlayerCoreWithApis = FullscreenApi &
   EmitterApi &
   PlayerCore;
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 declare interface Player extends PlayerCoreWithApis {
   readonly id: string;
   readonly $mediaEl: HTMLMediaElement;

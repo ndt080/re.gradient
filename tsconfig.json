@@ -1,15 +1,10 @@
 {
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
   "compilerOptions": {
     "strict": true,
-    "module": "esnext",
-    "target": "esnext",
+    "module": "EsNext",
+    "target": "EsNext",
     "lib": [
-      "esnext",
+      "EsNext",
       "dom",
       "dom.iterable"
     ],
@@ -27,10 +22,15 @@
     "useDefineForClassFields": false,
     "downlevelIteration": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "svelte"
+    ]
   },
   "include": [
-    "src"
+    "src",
+    "vite.config.ts"
   ],
   "exclude": [
     "node_modules",

@@ -8,6 +8,7 @@
 /build
 /dist
 /node_modules
+/@types
 
 # Additional
 /specs

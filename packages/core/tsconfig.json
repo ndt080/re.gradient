@@ -1,8 +1,33 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "strict": true,
+    "module": "EsNext",
+    "target": "EsNext",
+    "lib": [
+      "EsNext",
+      "dom",
+      "dom.iterable"
+    ],
+    "declaration": true,
+    "isolatedModules": true,
+    "emitDeclarationOnly": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": false,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "outDir": "./@types",
+    "types": [
+      "vite/client"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -12,5 +37,10 @@
   },
   "include": [
     "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "dist"
   ]
 }

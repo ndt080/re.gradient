@@ -1,5 +1,5 @@
-import { useEngineModule } from '@darkvi/core';
-import { Source } from '@darkvi/core/@types/types/source';
+import type { Source } from '@re.gradient/core';
+import { useEngineModule } from '@re.gradient/core';
 import Hls, { ErrorData, Events, HlsConfig } from 'hls.js';
 
 const HLSModule = function (config?: Partial<HlsConfig>) {
@@ -49,6 +49,7 @@ const HLSModule = function (config?: Partial<HlsConfig>) {
       }
 
       hls = new Hls(config);
+      player.hls = hls;
 
       hls.on(Events.ERROR, onHlsError);
       hls.loadSource(source.src);

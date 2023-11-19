@@ -1,5 +1,5 @@
 {
-  "name": "@darkvi/hls",
+  "name": "@re.gradient/hls",
   "version": "0.3.3",
   "type": "module",
   "main": "./dist/index.umd.js",
@@ -21,8 +21,8 @@
     "build:release": "tsc --emitDeclarationOnly && vite build --mode production"
   },
   "dependencies": {
-    "@darkvi/core": "^0.3.3",
-    "hls.js": "^1.3.5"
+    "@re.gradient/core": "^0.0.0",
+    "hls.js": "^1.4.12"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
