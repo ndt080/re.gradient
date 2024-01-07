@@ -36,7 +36,7 @@
   grid-template-rows: 1fr auto;
 
   &[data-status="playing"][data-hover="out"] {
-    @apply invisible opacity-0 delay-1000;
+    @apply invisible opacity-0 cursor-none;
   }
 
   &[data-status="playing"][data-move-waited] {
@@ -57,7 +57,7 @@
     @apply text-[0] w-full h-full m-0 p-0 object-contain;
 
     &::cue {
-      @apply text-gray-300 bg-black/80;
+      @apply text-gray-300 bg-black/80 text-sm;
     }
   }
 }

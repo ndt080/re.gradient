@@ -9,11 +9,10 @@ import ControlGroup from './ControlGroup.tsx';
 
 compose(
   register('re-control-group', {
-    moveWaitingTime: 1000,
+    moveWaitingTime: 3000,
   }),
   withSolid,
   registerStyleSheet(style),
   providePlayer(),
   registerAsContainer('control-group'),
 )(ControlGroup);
-

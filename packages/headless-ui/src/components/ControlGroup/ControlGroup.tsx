@@ -58,10 +58,16 @@ const ControlGroup: ComponentType<Props> = (props, { element, player }) => {
     clearTimer();
   };
 
-  const onMouseMove = debounce(() => {
+  const onMouseMove = debounce((e: unknown) => {
     clearTimer();
+    onMouseOver();
+
+    if (element.contains((e as MouseEvent).target as HTMLElement)) {
+      return;
+    }
+
     setTimer(setTimeout(() => element.setAttribute(WaitedAttribute, ''), props.moveWaitingTime));
-  }, 500);
+  }, 150);
 
   changeStatus('none');
 
