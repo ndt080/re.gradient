@@ -1,7 +1,7 @@
 import { compose, register } from 'component-register';
 import { withSolid } from 'solid-element';
 
-import Tooltip, { TooltipProps } from './TooltipCE.tsx';
+import Tooltip, { TooltipProps } from './Tooltip.tsx';
 
 compose(
   register('re-tooltip', {
@@ -12,7 +12,6 @@ compose(
 )(Tooltip);
 
 declare module 'solid-js' {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
       're-tooltip': TooltipProps;

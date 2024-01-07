@@ -1,32 +1,10 @@
 import type { ComponentType } from 'solid-element';
-import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
 
 export interface SettingsControlProps {
   tooltipText: string;
 }
 
 const SettingsControl: ComponentType<SettingsControlProps> = (props, { element }) => {
-  const [popoverVisible, setPopoverVisible] = createSignal<boolean>(false);
-  const [, setPopoverRef] = createSignal<HTMLDivElement>();
-
-  onMount(() => {
-    element.addEventListener('click', onToggleVisible);
-  });
-
-  onCleanup(() => {
-    element.removeEventListener('click', onToggleVisible);
-  });
-
-  createEffect(() => {
-    element.setAttribute('data-popover', popoverVisible() ? 'visible' : 'hidden');
-  });
-
-  const onToggleVisible = () => {
-    const state = !popoverVisible();
-    setPopoverVisible(state);
-    element.setAttribute('data-popover', state ? 'visible' : 'hidden');
-  };
-
   return (
     <>
       <re-tooltip text={props.tooltipText} target={element} />
@@ -41,10 +19,8 @@ const SettingsControl: ComponentType<SettingsControlProps> = (props, { element }
           />
         </svg>
       </slot>
-
-      <div ref={setPopoverRef} part="popover">
-        <slot />
-      </div>
+      
+      <slot />
     </>
   );
 };

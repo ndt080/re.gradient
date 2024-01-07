@@ -1,7 +1,7 @@
 import type { ComponentOptions } from 'component-register';
 import { createMixin } from 'component-register';
 
-export function registerAsPlayerContainer(name: string, asControlled = false) {
+export function registerAsContainer(name: string, asControlled = false) {
   return createMixin((options: ComponentOptions) => {
     const { element } = options;
     element.setAttribute('role', 'region');

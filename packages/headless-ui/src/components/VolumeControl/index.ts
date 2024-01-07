@@ -1,6 +1,6 @@
-import { appendStyleSheet } from '@shared/utils/appendStyleSheet.ts';
-import { reChainPlayerInstance } from '@shared/utils/reChainPlayerInstance.ts';
-import { registerAsPlayerControl } from '@shared/utils/registerAsPlayerControl.ts';
+import { providePlayer } from '@shared/utils/providePlayer.ts';
+import { registerAsControl } from '@shared/utils/registerAsControl.ts';
+import { registerStyleSheet } from '@shared/utils/registerStyleSheet.ts';
 import { compose, register } from 'component-register';
 import { withSolid } from 'solid-element';
 
@@ -13,7 +13,7 @@ compose(
     tooltipUnmuteText: 'Unmute',
   }),
   withSolid,
-  appendStyleSheet(style),
-  reChainPlayerInstance(),
-  registerAsPlayerControl('volume'),
+  registerStyleSheet(style),
+  providePlayer(),
+  registerAsControl('volume'),
 )(VolumeControl);

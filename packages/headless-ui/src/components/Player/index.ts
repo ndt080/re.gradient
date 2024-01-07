@@ -1,4 +1,4 @@
-import { registerAsPlayerContainer } from '@shared/utils/registerAsPlayerContainer.ts';
+import { registerAsContainer } from '@shared/utils/registerAsContainer.ts';
 import { compose, register } from 'component-register';
 import { withSolid } from 'solid-element';
 
@@ -21,5 +21,5 @@ compose(
     crossOrigin: true,
   }),
   withSolid,
-  registerAsPlayerContainer('video'),
+  registerAsContainer('video'),
 )(Player);

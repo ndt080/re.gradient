@@ -28,6 +28,7 @@
         "avoidEscape": true
       }
     ],
+    "@typescript-eslint/no-namespace": "off",
     "sort-imports": "off",
     "import/order": "off",
     "simple-import-sort/imports": "error",

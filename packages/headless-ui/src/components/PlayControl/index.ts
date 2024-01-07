@@ -1,5 +1,5 @@
-import { reChainPlayerInstance } from '@shared/utils/reChainPlayerInstance.ts';
-import { registerAsPlayerControl } from '@shared/utils/registerAsPlayerControl.ts';
+import { providePlayer } from '@shared/utils/providePlayer.ts';
+import { registerAsControl } from '@shared/utils/registerAsControl.ts';
 import { compose, register } from 'component-register';
 import { withSolid } from 'solid-element';
 
@@ -11,6 +11,6 @@ compose(
     tooltipPauseText: 'Pause',
   }),
   withSolid,
-  reChainPlayerInstance(),
-  registerAsPlayerControl('play'),
+  providePlayer(),
+  registerAsControl('play'),
 )(PlayControl);

@@ -3,7 +3,7 @@ import { createMixin } from 'component-register';
 
 import type { HtmlPlayerElement } from '@/types';
 
-export function reChainPlayerInstance() {
+export function providePlayer() {
   return createMixin((options: ComponentOptions) => {
     const { element } = options;
     const playerInstance = (element.parentElement as HtmlPlayerElement).player;

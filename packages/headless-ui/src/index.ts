@@ -10,3 +10,4 @@ import './components/TimeControl';
 import './components/TimeView';
 import './components/VolumeControl';
 import './components/SettingsControl';
+import './components/Popover';
